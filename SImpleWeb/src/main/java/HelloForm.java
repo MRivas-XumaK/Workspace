@@ -5,6 +5,7 @@
  */
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +29,7 @@ public class HelloForm extends HttpServlet {
             String title ="Using GET Method to Read Form Data";
             String docType;
             String path = request.getParameter("first_name");
-            String name = request.getParameter("last_name");
+            InputStream name = request.getInputStream();
             docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
                    "transitional//en\">\n";
             out.println(docType + "<html>\n"+
