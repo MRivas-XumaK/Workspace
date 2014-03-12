@@ -13,7 +13,11 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.jcr.Node;
 import javax.jcr.Repository;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+import javax.jcr.SimpleCredentials;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +25,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import org.apache.jackrabbit.commons.JcrUtils;
 import org.apache.jackrabbit.rmi.repository.RMIRemoteRepository;
 /**
  *
@@ -31,11 +36,11 @@ import org.apache.jackrabbit.rmi.repository.RMIRemoteRepository;
 public class FileServlet extends HttpServlet {
      private final static Logger LOGGER = 
             Logger.getLogger(FileServlet.class.getCanonicalName());
-     public final Repository repository =
-            new RMIRemoteRepository("//localhost/jackrabbit.repository");
+     /*public final Repository repository =
+            new RMIRemoteRepository("//localhost/jackrabbit.repository");*/
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, RepositoryException {
         response.setContentType("text/html;charset=UTF-8");
             // Create path components to save the file
         final String path = request.getParameter("destination"); //Directorio a donde lo voy a poner
@@ -56,11 +61,13 @@ public class FileServlet extends HttpServlet {
 
             int read = 0;
             final byte[] bytes = new byte[1024];    //image size
-
+            run(filecontent);
+            writer.println("New file " + fileName + " created at " + path);
             while ((read = filecontent.read(bytes)) != -1) {
                 out.write(bytes, 0, read);
             }
-            writer.println("New file " + fileName + " created at " + path);
+            writer.println(filecontent.toString());
+            
             LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", 
                     new Object[]{fileName, path});
         }catch (FileNotFoundException fne) {
@@ -84,7 +91,25 @@ public class FileServlet extends HttpServlet {
         }
     }
     
-    
+    public void run(InputStream image) throws RepositoryException, FileNotFoundException, IOException{
+                 String url = "http://localhost:8080/rmi";
+                 System.out.println("Connecting to " + url);
+                 Repository repository = JcrUtils.getRepository(url);
+                 System.out.println("Repository Created");
+                 SimpleCredentials creds = new SimpleCredentials("admin","admin".toCharArray());
+                 Session jcrSession = repository.login(creds, "default");
+                 System.out.println("Session establesida como" + creds.toString());
+                 Node root = jcrSession.getRootNode();
+                 Node x = root.addNode("Image");
+                 System.out.println(x.getPath()+ "to save: " + image.toString());
+                 jcrSession.save();
+                 x.setProperty("jcr:data", image);
+                 System.out.println("Node path: " + x.getPath());
+                 jcrSession.save();
+                 //System.out.println("Login successful, workspace: " + jcrSession.getWorkspace());
+                 
+                 jcrSession.logout();
+           }   
 
     
     
@@ -112,7 +137,11 @@ public class FileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         try {
+             processRequest(request, response);
+         } catch (RepositoryException ex) {
+             Logger.getLogger(FileServlet.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
 
     /**
@@ -126,7 +155,11 @@ public class FileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         try {
+             processRequest(request, response);
+         } catch (RepositoryException ex) {
+             Logger.getLogger(FileServlet.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
 
     /**
