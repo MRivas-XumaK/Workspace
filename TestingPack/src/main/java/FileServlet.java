@@ -13,6 +13,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.jcr.Repository;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import org.apache.jackrabbit.rmi.repository.RMIRemoteRepository;
 /**
  *
  * @author xumak-pc
@@ -29,6 +31,8 @@ import javax.servlet.http.Part;
 public class FileServlet extends HttpServlet {
      private final static Logger LOGGER = 
             Logger.getLogger(FileServlet.class.getCanonicalName());
+     public final Repository repository =
+            new RMIRemoteRepository("//localhost/jackrabbit.repository");
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -79,6 +83,10 @@ public class FileServlet extends HttpServlet {
             }
         }
     }
+    
+    
+
+    
     
     private String getFileName(final Part part) {
         final String partHeader = part.getHeader("content-disposition");
