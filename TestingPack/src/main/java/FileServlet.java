@@ -9,10 +9,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
+import javax.jcr.Property;
+import javax.jcr.PropertyIterator;
 import javax.jcr.Repository;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
@@ -35,6 +38,7 @@ import org.apache.jackrabbit.commons.JcrUtils;
 public class FileServlet extends HttpServlet {
      private final static Logger LOGGER = 
             Logger.getLogger(FileServlet.class.getCanonicalName());
+     String ImFiles, MusicFiles, DcsFIles, UnknwnFiles;
      /*public final Repository repository =
             new RMIRemoteRepository("//localhost/jackrabbit.repository");*/
     
@@ -42,53 +46,14 @@ public class FileServlet extends HttpServlet {
             throws ServletException, IOException, RepositoryException {
         response.setContentType("text/html;charset=UTF-8");
             // Create path components to save the file
-        final String path = request.getParameter("destination"); //Directorio a donde lo voy a poner
+        //final String path = request.getParameter("destination"); //Directorio a donde lo voy a poner
         final Part filePart = request.getPart("file");
-        final String fileName = getFileName(filePart);
-        
-        LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", 
-                    new Object[]{fileName, path});
-        
-        OutputStream out = null;
+        String filename = getFileName(filePart);
         InputStream filecontent = null;
-        final PrintWriter writer = response.getWriter();
+        filecontent = filePart.getInputStream();
+        run(filecontent,filename);
         
-        try {
-            /*out = new FileOutputStream(new File(path + File.separator
-                    + fileName));*/
-            filecontent = filePart.getInputStream();
-
-            int read = 0;
-            final byte[] bytes = new byte[1024];    //image size
-            run(filecontent, fileName);
-            writer.println("New file " + fileName + " created at " + path);
-            System.out.println("Filename is: " + fileName);
-            /*while ((read = filecontent.read(bytes)) != -1) {
-                out.write(bytes, 0, read);
-            }*/
-            writer.println(filecontent.toString());
-            
-            LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", 
-                    new Object[]{fileName, path});
-        }catch (FileNotFoundException fne) {
-            writer.println("You either did not specify a file to upload or are "
-                    + "trying to upload a file to a protected or nonexistent "
-                    + "location.");
-            writer.println("<br/> ERROR: " + fne.getMessage());
-
-            LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}", 
-                    new Object[]{fne.getMessage()});
-        }finally {
-            if (out != null) {
-                out.close();
-            }
-            if (filecontent != null) {
-                filecontent.close();
-            }
-            if (writer != null) {
-                writer.close();
-            }
-        }
+        
     }
     
     public void run(InputStream file,String fileName) throws RepositoryException, FileNotFoundException, IOException{
@@ -123,11 +88,32 @@ public class FileServlet extends HttpServlet {
             Unknown.setProperty(nameOfFile, file);
             jcrSession.save();
         }
-        //System.out.println("Login successful, workspace: " + jcrSession.getWorkspace());
-
+        ImFiles = impression(ImagesNode);
+        MusicFiles = impression(MusicNode);
+        DcsFIles = impression(DocsNode);
+        UnknwnFiles=impression(Unknown);
         jcrSession.logout();
-      }   
+        
+      }
+     public String impression(Node n) throws RepositoryException{
+       String auxiliar = "";
+       String output = n.getName() + ": <br>";
+       Property aux;
+       PropertyIterator auxiliar1 = n.getProperties();
+       if(auxiliar1.hasNext()){
+           while(auxiliar1.getPosition() < auxiliar1.getSize()){
+               aux = auxiliar1.nextProperty();
+               //aux1.next();
+               auxiliar = aux.getName();
+               if(!auxiliar.equals("jcr:primaryType")){
+                    output = output + "<a href=\"https:www.google.com.gt\">" + auxiliar + "</a><br>";
+               }
+           }
+       }
+        return output;
 
+    }
+     
     public String fileExt(String file){
         String fileExt = null;
         if(file.contains(".")){
