@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -14,6 +12,7 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jcr.Node;
+import javax.jcr.NodeIterator;
 import javax.jcr.Repository;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
@@ -26,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import org.apache.jackrabbit.commons.JcrUtils;
-import org.apache.jackrabbit.rmi.repository.RMIRemoteRepository;
+
 /**
  *
  * @author xumak-pc
@@ -55,17 +54,18 @@ public class FileServlet extends HttpServlet {
         final PrintWriter writer = response.getWriter();
         
         try {
-            out = new FileOutputStream(new File(path + File.separator
-                    + fileName));
+            /*out = new FileOutputStream(new File(path + File.separator
+                    + fileName));*/
             filecontent = filePart.getInputStream();
 
             int read = 0;
             final byte[] bytes = new byte[1024];    //image size
-            run(filecontent);
+            run(filecontent, fileName);
             writer.println("New file " + fileName + " created at " + path);
-            while ((read = filecontent.read(bytes)) != -1) {
+            System.out.println("Filename is: " + fileName);
+            /*while ((read = filecontent.read(bytes)) != -1) {
                 out.write(bytes, 0, read);
-            }
+            }*/
             writer.println(filecontent.toString());
             
             LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", 
@@ -91,27 +91,63 @@ public class FileServlet extends HttpServlet {
         }
     }
     
-    public void run(InputStream image) throws RepositoryException, FileNotFoundException, IOException{
-                 String url = "http://localhost:8080/rmi";
-                 System.out.println("Connecting to " + url);
-                 Repository repository = JcrUtils.getRepository(url);
-                 System.out.println("Repository Created");
-                 SimpleCredentials creds = new SimpleCredentials("admin","admin".toCharArray());
-                 Session jcrSession = repository.login(creds, "default");
-                 System.out.println("Session establesida como" + creds.toString());
-                 Node root = jcrSession.getRootNode();
-                 Node x = root.addNode("Image");
-                 System.out.println(x.getPath()+ "to save: " + image.toString());
-                 jcrSession.save();
-                 x.setProperty("jcr:data", image);
-                 System.out.println("Node path: " + x.getPath());
-                 jcrSession.save();
-                 //System.out.println("Login successful, workspace: " + jcrSession.getWorkspace());
-                 
-                 jcrSession.logout();
-           }   
+    public void run(InputStream file,String fileName) throws RepositoryException, FileNotFoundException, IOException{
+        String url = "http://localhost:8080/rmi";
+        Repository repository = JcrUtils.getRepository(url);
+        SimpleCredentials creds = new SimpleCredentials("admin","admin".toCharArray());
+        Session jcrSession = repository.login(creds, "default");
+        
+        Node root = jcrSession.getRootNode();
+        Node ImagesNode = root.getNode("Images");
+        Node MusicNode = root.getNode("Music");
+        Node DocsNode = root.getNode("Documents");
+        Node Unknown = root.getNode("Unknown");
+        
+        String nameOfFile = fileName(fileName);
+        String extOfFIle = fileExt(fileName);
+        
+        if(extOfFIle.equals(".png") || extOfFIle.equals(".jpg")){
+           System.out.println("Pictures");
+           ImagesNode.setProperty(nameOfFile, file);
+           jcrSession.save();
+        }else if(extOfFIle.equals(".mp3") || extOfFIle.equals(".wma") || extOfFIle.equals(".wav")){
+            System.out.println("Music");
+            MusicNode.setProperty(nameOfFile, file);
+            jcrSession.save();
+        }else if(extOfFIle.equals(".txt") || extOfFIle.equals(".doc") || extOfFIle.equals(".docx") || extOfFIle.equals(".pdf") ){
+             System.out.println("Documents");
+            DocsNode.setProperty(nameOfFile, file);
+            jcrSession.save();
+        }else{
+             System.out.println("Unknown");
+            Unknown.setProperty(nameOfFile, file);
+            jcrSession.save();
+        }
+        //System.out.println("Login successful, workspace: " + jcrSession.getWorkspace());
 
+        jcrSession.logout();
+      }   
+
+    public String fileExt(String file){
+        String fileExt = null;
+        if(file.contains(".")){
+            fileExt = file.substring(file.indexOf("."), file.length());
+            
+        }else{
+            System.out.println(file + "Is not a file");
+        }
+        return fileExt;  
+    }
     
+    public String fileName(String file){
+        String fileName = null;
+        if(file.contains(".")){
+            fileName = file.substring(0, file.indexOf("."));
+        }else{
+            System.out.println(file + "Is not a file");
+        }
+        return fileName;
+    }
     
     private String getFileName(final Part part) {
         final String partHeader = part.getHeader("content-disposition");
@@ -123,6 +159,23 @@ public class FileServlet extends HttpServlet {
             }
         }
         return null;
+    }
+    
+    public static String preorder(Node n) throws RepositoryException{
+       NodeIterator avaNodes;
+       avaNodes = n.getNodes(); 
+       String nodePath = "";
+       if(!n.hasNodes()){
+            return nodePath;
+        }else{
+            while(avaNodes.getPosition() != avaNodes.getSize()){
+                n = avaNodes.nextNode();
+                nodePath = nodePath + n.getPath();
+                System.out.println(nodePath);
+                preorder(n);
+            }
+            return nodePath;
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -171,5 +224,7 @@ public class FileServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+
 
 }
