@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jcr.Node;
@@ -46,13 +47,41 @@ public class FileServlet extends HttpServlet {
             throws ServletException, IOException, RepositoryException {
         response.setContentType("text/html;charset=UTF-8");
             // Create path components to save the file
-        //final String path = request.getParameter("destination"); //Directorio a donde lo voy a poner
+        final String path = "/home/xumak-pc/apache-tomcat-7.0.41/webapps/ROOT"; //Directorio a donde lo voy a poner
         final Part filePart = request.getPart("file");
         String filename = getFileName(filePart);
+        
+        PrintWriter writeOut= response.getWriter();
+        String docType;
+        String title ="Displaying images";
+        
         InputStream filecontent = null;
+        InputStream emptyFIle = null;
+        OutputStream out = null;
+        
         filecontent = filePart.getInputStream();
+        emptyFIle = filePart.getInputStream();
         run(filecontent,filename);
         
+        out = new FileOutputStream(new File(path + File.separator
+                    + filename));
+        int read = 0;
+            final byte[] bytes = new byte[1024];    //image size
+
+            while ((read = emptyFIle.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+        
+        docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
+                   "transitional//en\">\n";
+            writeOut.println(docType + "<html>\n"+
+            "<head><title>"+ title +"</title></head>\n"+
+            "<body bgcolor=\"#f0f0f0\">\n"+
+            "<h1 align=\"center\">"+ title +"</h1>\n"+
+            "<ul>\n"+
+            " <li><b>First Name</b>: "
+            + ImFiles+"\n"+
+            "</ul>\n"+"</body></html>"); 
         
     }
     
@@ -88,6 +117,7 @@ public class FileServlet extends HttpServlet {
             Unknown.setProperty(nameOfFile, file);
             jcrSession.save();
         }
+        // preorder(ImagesNode, fileName);
         ImFiles = impression(ImagesNode);
         MusicFiles = impression(MusicNode);
         DcsFIles = impression(DocsNode);
@@ -106,7 +136,7 @@ public class FileServlet extends HttpServlet {
                //aux1.next();
                auxiliar = aux.getName();
                if(!auxiliar.equals("jcr:primaryType")){
-                    output = output + "<a href=\"https:www.google.com.gt\">" + auxiliar + "</a><br>";
+                    output = output + "<img src=\"" + auxiliar + "\"</a><br>";
                }
            }
        }
@@ -147,18 +177,20 @@ public class FileServlet extends HttpServlet {
         return null;
     }
     
-    public static String preorder(Node n) throws RepositoryException{
+    public static String preorder(Node n,String name) throws RepositoryException{
        NodeIterator avaNodes;
        avaNodes = n.getNodes(); 
        String nodePath = "";
+       System.out.println("name");
        if(!n.hasNodes()){
-            return nodePath;
+            return n.getPath();
         }else{
-            while(avaNodes.getPosition() != avaNodes.getSize()){
+           System.out.println("entro");
+            while(avaNodes.getPosition() != avaNodes.getSize() && n.getName() != name){
                 n = avaNodes.nextNode();
                 nodePath = nodePath + n.getPath();
                 System.out.println(nodePath);
-                preorder(n);
+                preorder(n, name);
             }
             return nodePath;
         }
