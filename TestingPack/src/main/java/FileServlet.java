@@ -14,7 +14,6 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jcr.Node;
-import javax.jcr.NodeIterator;
 import javax.jcr.Property;
 import javax.jcr.PropertyIterator;
 import javax.jcr.Repository;
@@ -40,6 +39,8 @@ public class FileServlet extends HttpServlet {
      private final static Logger LOGGER = 
             Logger.getLogger(FileServlet.class.getCanonicalName());
      String ImFiles, MusicFiles, DcsFIles, UnknwnFiles;
+     String path = "/home/xumak-pc/apache-tomcat-7.0.41/webapps/ROOT/";
+     String host = "http://localhost:8084/";
      /*public final Repository repository =
             new RMIRemoteRepository("//localhost/jackrabbit.repository");*/
     
@@ -47,13 +48,13 @@ public class FileServlet extends HttpServlet {
             throws ServletException, IOException, RepositoryException {
         response.setContentType("text/html;charset=UTF-8");
             // Create path components to save the file
-        final String path = "/home/xumak-pc/apache-tomcat-7.0.41/webapps/ROOT"; //Directorio a donde lo voy a poner
+         //Directorio a donde lo voy a poner
         final Part filePart = request.getPart("file");
         String filename = getFileName(filePart);
         
         PrintWriter writeOut= response.getWriter();
         String docType;
-        String title ="Displaying images";
+        String title ="Displaying images<br>";
         
         InputStream filecontent = null;
         InputStream emptyFIle = null;
@@ -61,8 +62,8 @@ public class FileServlet extends HttpServlet {
         
         filecontent = filePart.getInputStream();
         emptyFIle = filePart.getInputStream();
-        run(filecontent,filename);
         
+        run(filecontent,filename);
         out = new FileOutputStream(new File(path + File.separator
                     + filename));
         int read = 0;
@@ -71,16 +72,13 @@ public class FileServlet extends HttpServlet {
             while ((read = emptyFIle.read(bytes)) != -1) {
                 out.write(bytes, 0, read);
             }
-        
         docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
                    "transitional//en\">\n";
             writeOut.println(docType + "<html>\n"+
             "<head><title>"+ title +"</title></head>\n"+
             "<body bgcolor=\"#f0f0f0\">\n"+
             "<h1 align=\"center\">"+ title +"</h1>\n"+
-            "<ul>\n"+
-            " <li><b>First Name</b>: "
-            + ImFiles+"\n"+
+            "<ul>\n"+ ImFiles+"\n"+
             "</ul>\n"+"</body></html>"); 
         
     }
@@ -99,22 +97,22 @@ public class FileServlet extends HttpServlet {
         
         String nameOfFile = fileName(fileName);
         String extOfFIle = fileExt(fileName);
-        
+        System.out.println("Nodes created");
         if(extOfFIle.equals(".png") || extOfFIle.equals(".jpg")){
            System.out.println("Pictures");
-           ImagesNode.setProperty(nameOfFile, file);
+           ImagesNode.setProperty(fileName, file);
            jcrSession.save();
         }else if(extOfFIle.equals(".mp3") || extOfFIle.equals(".wma") || extOfFIle.equals(".wav")){
             System.out.println("Music");
-            MusicNode.setProperty(nameOfFile, file);
+            MusicNode.setProperty(fileName, file);
             jcrSession.save();
         }else if(extOfFIle.equals(".txt") || extOfFIle.equals(".doc") || extOfFIle.equals(".docx") || extOfFIle.equals(".pdf") ){
              System.out.println("Documents");
-            DocsNode.setProperty(nameOfFile, file);
+            DocsNode.setProperty(fileName, file);
             jcrSession.save();
         }else{
              System.out.println("Unknown");
-            Unknown.setProperty(nameOfFile, file);
+            Unknown.setProperty(fileName, file);
             jcrSession.save();
         }
         // preorder(ImagesNode, fileName);
@@ -127,7 +125,7 @@ public class FileServlet extends HttpServlet {
       }
      public String impression(Node n) throws RepositoryException{
        String auxiliar = "";
-       String output = n.getName() + ": <br>";
+       String output = n.getName() + ": ";
        Property aux;
        PropertyIterator auxiliar1 = n.getProperties();
        if(auxiliar1.hasNext()){
@@ -135,8 +133,9 @@ public class FileServlet extends HttpServlet {
                aux = auxiliar1.nextProperty();
                //aux1.next();
                auxiliar = aux.getName();
+               //System.out.println(auxiliar);
                if(!auxiliar.equals("jcr:primaryType")){
-                    output = output + "<img src=\"" + auxiliar + "\"</a><br>";
+                    output = output + "<br><img src=\"" + host +auxiliar +  "\" width = 50 height= 50><br>";
                }
            }
        }
@@ -175,25 +174,6 @@ public class FileServlet extends HttpServlet {
             }
         }
         return null;
-    }
-    
-    public static String preorder(Node n,String name) throws RepositoryException{
-       NodeIterator avaNodes;
-       avaNodes = n.getNodes(); 
-       String nodePath = "";
-       System.out.println("name");
-       if(!n.hasNodes()){
-            return n.getPath();
-        }else{
-           System.out.println("entro");
-            while(avaNodes.getPosition() != avaNodes.getSize() && n.getName() != name){
-                n = avaNodes.nextNode();
-                nodePath = nodePath + n.getPath();
-                System.out.println(nodePath);
-                preorder(n, name);
-            }
-            return nodePath;
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
