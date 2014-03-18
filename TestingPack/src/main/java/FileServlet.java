@@ -20,8 +20,6 @@ import javax.jcr.Repository;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.SimpleCredentials;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +38,7 @@ import org.apache.jackrabbit.commons.JcrUtils;
 public class FileServlet extends HttpServlet {
      private final static Logger LOGGER = 
             Logger.getLogger(FileServlet.class.getCanonicalName());
-     String ImFiles, MusicFiles, DcsFIles, UnknwnFiles;
+     String OptList;
      String path = "/home/xumak-pc/apache-tomcat-7.0.41/webapps/ROOT/";
      String host = "http://localhost:8084/";
      
@@ -55,9 +53,9 @@ public class FileServlet extends HttpServlet {
         final Part filePart = request.getPart("file");
         String filename = getFileName(filePart);
           
-        //PrintWriter writeOut= response.getWriter();
+        PrintWriter writeOut= response.getWriter();
         String docType;
-        String title ="Displaying images<br>";
+        String title ="Select a file to display<br>";
         
         InputStream filecontent = null;
         InputStream emptyFIle = null;
@@ -70,23 +68,28 @@ public class FileServlet extends HttpServlet {
         out = new FileOutputStream(new File(path + File.separator
                     + filename));
         int read = 0;
-            byte[] bytes = new byte[emptyFIle.available()];    //image size
+        byte[] bytes = new byte[emptyFIle.available()];    //image size
 
-            while ((read = emptyFIle.read(bytes)) != -1) {
-                out.write(bytes, 0, read);
-            }
-            response.setContentType("image/jpeg");
-            response.setContentLength(bytes.length);
-            System.out.println(bytes);
-            response.getOutputStream().write(bytes);
-        /*docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
-                   "transitional//en\">\n";
-            writeOut.println(docType + "<html>\n"+
-            "<head><title>"+ title +"</title></head>\n"+
-            "<body bgcolor=\"#f0f0f0\">\n"+
+        while ((read = emptyFIle.read(bytes)) != -1) {
+            out.write(bytes, 0, read);
+        }
+        
+
+        /*response.setContentType("image/jpeg");
+        response.setContentLength(bytes.length);
+        System.out.println(bytes);
+        response.getOutputStream().write(bytes);*/
+        docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
+               "transitional//en\">\n";
+        writeOut.println(docType + "<html>\n"+
+        "<head><title>"+ title +"</title></head>\n"+
+        "<body bgcolor=\"#f0f0f0\">\n"+
             "<h1 align=\"center\">"+ title +"</h1>\n"+
-            "<ul>\n"+ ImFiles+"\n"+
-            "</ul>\n"+"</body></html>"); */
+            "<form action=\"DIsplayImage\" method=\"POST\">" +
+                "<center><select name =\"DropList\" onchange=\"this.form.submit()\">" + OptList+
+                "</select></center>" +
+            "</form>" +
+        "</body></html>"); 
         
     }
     
@@ -122,27 +125,26 @@ public class FileServlet extends HttpServlet {
             Unknown.setProperty(fileName, file);
             jcrSession.save();
         }
-        // preorder(ImagesNode, fileName);
-        ImFiles = impression(ImagesNode);
-        MusicFiles = impression(MusicNode);
-        DcsFIles = impression(DocsNode);
-        UnknwnFiles=impression(Unknown);
+        // preorder(ImagesNode, fileName);}
+        OptList = impression(ImagesNode);
+        System.out.println(OptList);
         jcrSession.logout();
         
       }
      public String impression(Node n) throws RepositoryException{
        String auxiliar = "";
-       String output = n.getName() + ": ";
+       String output="";
+       String name;
        Property aux;
        PropertyIterator auxiliar1 = n.getProperties();
        if(auxiliar1.hasNext()){
            while(auxiliar1.getPosition() < auxiliar1.getSize()){
                aux = auxiliar1.nextProperty();
                //aux1.next();
-               auxiliar = aux.getName();
+               name = aux.getName();
                //System.out.println(auxiliar);
-               if(!auxiliar.equals("jcr:primaryType")){
-                    output = output + "<br><img src=\"" + host +auxiliar +  "\" width = 50 height= 50><br>";
+               if(!name.equals("jcr:primaryType")){
+                    output = output + "<option value=\"" + name +  "\">"+ name + "</option>" ;
                }
            }
        }

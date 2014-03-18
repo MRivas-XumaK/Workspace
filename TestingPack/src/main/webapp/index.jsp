@@ -14,5 +14,8 @@
             <br>
             <input type="submit" value="Upload" name="upload" id="upload"/>
         </form>
+        <form action="DIsplayImage" >
+            <input type="submit" value="ImageList" name="ImageList" id="upload"/>
+        </form>
     </body>
 </html>
