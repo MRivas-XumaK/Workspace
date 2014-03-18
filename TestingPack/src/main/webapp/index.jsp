@@ -10,8 +10,6 @@
     <body>
         <h1>File Upload!</h1>
         <form action="FileServlet" method="POST" enctype="multipart/form-data" >
-            File Name: <input type="text" value="/tmp" name="destination">
-            <br>
             File: <input type="file"  name="file" id="file"/>
             <br>
             <input type="submit" value="Upload" name="upload" id="upload"/>

@@ -20,6 +20,8 @@ import javax.jcr.Repository;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.SimpleCredentials;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -41,18 +43,19 @@ public class FileServlet extends HttpServlet {
      String ImFiles, MusicFiles, DcsFIles, UnknwnFiles;
      String path = "/home/xumak-pc/apache-tomcat-7.0.41/webapps/ROOT/";
      String host = "http://localhost:8084/";
+     
      /*public final Repository repository =
             new RMIRemoteRepository("//localhost/jackrabbit.repository");*/
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, RepositoryException {
-        response.setContentType("text/html;charset=UTF-8");
+        //response.setContentType("text/html;charset=UTF-8");
             // Create path components to save the file
          //Directorio a donde lo voy a poner
         final Part filePart = request.getPart("file");
         String filename = getFileName(filePart);
-        
-        PrintWriter writeOut= response.getWriter();
+          
+        //PrintWriter writeOut= response.getWriter();
         String docType;
         String title ="Displaying images<br>";
         
@@ -67,19 +70,23 @@ public class FileServlet extends HttpServlet {
         out = new FileOutputStream(new File(path + File.separator
                     + filename));
         int read = 0;
-            final byte[] bytes = new byte[1024];    //image size
+            byte[] bytes = new byte[emptyFIle.available()];    //image size
 
             while ((read = emptyFIle.read(bytes)) != -1) {
                 out.write(bytes, 0, read);
             }
-        docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
+            response.setContentType("image/jpeg");
+            response.setContentLength(bytes.length);
+            System.out.println(bytes);
+            response.getOutputStream().write(bytes);
+        /*docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
                    "transitional//en\">\n";
             writeOut.println(docType + "<html>\n"+
             "<head><title>"+ title +"</title></head>\n"+
             "<body bgcolor=\"#f0f0f0\">\n"+
             "<h1 align=\"center\">"+ title +"</h1>\n"+
             "<ul>\n"+ ImFiles+"\n"+
-            "</ul>\n"+"</body></html>"); 
+            "</ul>\n"+"</body></html>"); */
         
     }
     

@@ -13,6 +13,5 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <img src=\"" + auxiliar + "\"</a><br>
     </body>
 </html>
