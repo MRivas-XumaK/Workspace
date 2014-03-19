@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.jackrabbit.commons.JcrUtils;
 
 /**
@@ -53,7 +54,6 @@ public class FileServlet extends HttpServlet {
         final Part filePart = request.getPart("file");
         String filename = getFileName(filePart);
           
-        PrintWriter writeOut= response.getWriter();
         String docType;
         String title ="Select a file to display<br>";
         
@@ -73,7 +73,10 @@ public class FileServlet extends HttpServlet {
         while ((read = emptyFIle.read(bytes)) != -1) {
             out.write(bytes, 0, read);
         }
-        
+        byte[] encoded = Base64.encodeBase64(bytes);
+        String encodedString = new String(encoded);
+        System.out.println("encodedBytes: "+ encodedString);
+        PrintWriter writeOut= response.getWriter();
 
         /*response.setContentType("image/jpeg");
         response.setContentLength(bytes.length);
@@ -85,9 +88,13 @@ public class FileServlet extends HttpServlet {
         "<head><title>"+ title +"</title></head>\n"+
         "<body bgcolor=\"#f0f0f0\">\n"+
             "<h1 align=\"center\">"+ title +"</h1>\n"+
-            "<form action=\"DIsplayImage\" method=\"POST\">" +
+            "<form action=\"DropDowServlet\" method=\"POST\">" +
                 "<center><select name =\"DropList\" onchange=\"this.form.submit()\">" + OptList+
                 "</select></center>" +
+            "</form>" +
+            "<center><img src=\"data:image/jpeg;base64,"+ encodedString +"\" hieght=20% width=20%/></center>"+
+            "<form action=\"index.jsp\">\n" +
+                "<center><input type=\"submit\" value=\"Start\"></center>\n" +
             "</form>" +
         "</body></html>"); 
         

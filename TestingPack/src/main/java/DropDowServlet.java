@@ -85,6 +85,9 @@ public class DropDowServlet extends HttpServlet {
         
         out.println(docType + 
                 "<center><img src=\"data:image/jpeg;base64,"+ encodedString +"\" hieght=20% width=20%/></center>"+
+                "<form action=\"index.jsp\">\n" +
+                    "<center><input type=\"submit\" value=\"Start\"></center>\n" +
+                "</form>" +
                 "</body></html>");
     }
     
