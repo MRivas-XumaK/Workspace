@@ -14,7 +14,7 @@
             <br>
             <input type="submit" value="Upload" name="upload" id="upload"/>
         </form>
-        <form action="DropDowServlet" >
+        <form action="DropDowServlet" method="POST">
             <br>Display Image<br><input type="submit" value="Lista de imagenes" name="upload" id="upload"/>
         </form>
     </body>

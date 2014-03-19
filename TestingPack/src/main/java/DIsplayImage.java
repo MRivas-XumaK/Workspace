@@ -6,6 +6,7 @@
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jcr.Node;
@@ -20,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.jackrabbit.commons.JcrUtils;
 
 /**
@@ -58,11 +60,26 @@ public class DIsplayImage extends HttpServlet {
         InputStream TheFile = impression(file,ImagesNode);
         byte[] bytes = new byte[TheFile.available()];
         TheFile.read(bytes);
+        byte[] encoded = Base64.encodeBase64(bytes);
+        String encodedString = new String(encoded);
+        System.out.println("encodedBytes: "+ encodedString);
+        PrintWriter writeOut= response.getWriter();
         
-        response.setContentType("image/jpeg");
+        String docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
+               "transitional//en\">\n";
+        String title = "This is the new Image";
+        
+        writeOut.println(docType + "<html>\n"+
+        "<head><title>"+ title +"</title></head>\n"+
+        "<body bgcolor=\"#f0f0f0\">\n"+
+            "<h1 align=\"center\">"+ title +"</h1>\n"+
+            "<img src=\"data:image/jpeg;base64,"+ encodedString +"\" />"+
+        "</body></html>"); 
+        
+        /*response.setContentType("image/jpeg");
         response.setContentLength(bytes.length);
         //response.getOutputStream().print("Hello World!");
-        response.getOutputStream().write(bytes);
+        response.getOutputStream().write(bytes);*/
         
     }
     public InputStream impression(String NodeName, Node n) throws RepositoryException{
@@ -85,7 +102,6 @@ public class DIsplayImage extends HttpServlet {
         return file;
 
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
