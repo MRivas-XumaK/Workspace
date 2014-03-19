@@ -5,7 +5,7 @@
  */
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jcr.Node;
@@ -26,8 +26,8 @@ import org.apache.jackrabbit.commons.JcrUtils;
  *
  * @author xumak-pc
  */
-@WebServlet(urlPatterns = {"/DIsplayImage"})
-public class DIsplayImage extends HttpServlet {
+@WebServlet(urlPatterns = {"/DropDowServlet"})
+public class DropDowServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,11 +37,12 @@ public class DIsplayImage extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws javax.jcr.RepositoryException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, RepositoryException {
-        String file = request.getParameter("DropList");
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        String title ="Select a file to display<br>";
         
         String url = "http://localhost:8080/rmi";
         Repository repository = JcrUtils.getRepository(url);
@@ -50,42 +51,42 @@ public class DIsplayImage extends HttpServlet {
         
         Node root = jcrSession.getRootNode();
         Node ImagesNode = root.getNode("Images");
-        Node MusicNode = root.getNode("Music");
-        Node DocsNode = root.getNode("Documents");
-        Node Unknown = root.getNode("Unknown");
+        String OptList = impression(ImagesNode);
         
-        int read = 0;
-        InputStream TheFile = impression(file,ImagesNode);
-        byte[] bytes = new byte[TheFile.available()];
-        TheFile.read(bytes);
         
-        response.setContentType("image/jpeg");
-        response.setContentLength(bytes.length);
-        //response.getOutputStream().print("Hello World!");
-        response.getOutputStream().write(bytes);
-        
+        String docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
+               "transitional//en\">\n";
+        out.println(docType + "<html>\n"+
+        "<head><title>"+ title +"</title></head>\n"+
+        "<body bgcolor=\"#f0f0f0\">\n"+
+            "<h1 align=\"center\">"+ title +"</h1>\n"+
+            "<form action=\"DIsplayImage\" method=\"POST\">" +
+                "<center><select name =\"DropList\" onchange=\"this.form.submit()\">" + OptList+
+                "</select></center>" +
+            "</form>" +
+        "</body></html>");
     }
-    public InputStream impression(String NodeName, Node n) throws RepositoryException{
+    
+    public String impression(Node n) throws RepositoryException{
+       String auxiliar = "";
        String output="";
        String name;
        Property aux;
-       InputStream file= null;
        PropertyIterator auxiliar1 = n.getProperties();
        if(auxiliar1.hasNext()){
            while(auxiliar1.getPosition() < auxiliar1.getSize()){
                aux = auxiliar1.nextProperty();
+               //aux1.next();
                name = aux.getName();
+               //System.out.println(auxiliar);
                if(!name.equals("jcr:primaryType")){
-                    if(name.equals(NodeName)){
-                        file = n.getProperty(NodeName).getStream();
-                    }
+                    output = output + "<option value=\"" + name +  "\">"+ name + "</option>" ;
                }
            }
        }
-        return file;
+        return output;
 
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -101,7 +102,7 @@ public class DIsplayImage extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (RepositoryException ex) {
-            Logger.getLogger(DIsplayImage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DropDowServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -119,7 +120,7 @@ public class DIsplayImage extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (RepositoryException ex) {
-            Logger.getLogger(DIsplayImage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DropDowServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
