@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -31,8 +25,16 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.jackrabbit.commons.JcrUtils;
 
 /**
- *
- * @author xumak-pc
+ * The FileServlet class is the class used to receive the file from the jsp/HTML
+ * page and store it in the nodes of the Jackrabbit repository of the actual session;
+ * It is restricted to use the doPost methods due to the MultipartConfig dependancies;
+ * 
+ * The MultipartConfig is a library used to manage the file header and body correctly
+ * so it is stored in the Nodes of the repository correctly; It uses other methods for
+ * the correct usage of this library.
+ * 
+ * 
+ * @author Mario Rolando Rivas
  */
 @WebServlet(name= "FileServlet",urlPatterns = {"/FileServlet"})
 @MultipartConfig
@@ -42,15 +44,24 @@ public class FileServlet extends HttpServlet {
      String OptList;
      String path = "/home/xumak-pc/apache-tomcat-7.0.41/webapps/ROOT/";
      String host = "http://localhost:8084/";
-     
-     /*public final Repository repository =
-            new RMIRemoteRepository("//localhost/jackrabbit.repository");*/
     
+     /**
+      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+      * methods;
+      * It displays the image selected in the JSP page with the docType String
+      * with HTML code in the the DrodDownServlet; Part object is used to 
+      * separate the file parts with the name of the File, and the file content;
+      * It uses a run method, wich saves the image in the correct node of the 
+      * repository.
+      * 
+      * @param request      servlet request
+      * @param response     servlet response
+      * @throws             ServletException
+      * @throws             IOException
+      * @throws             RepositoryException 
+      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, RepositoryException {
-        //response.setContentType("text/html;charset=UTF-8");
-            // Create path components to save the file
-         //Directorio a donde lo voy a poner
         final Part filePart = request.getPart("file");
         String filename = getFileName(filePart);
           
@@ -99,7 +110,20 @@ public class FileServlet extends HttpServlet {
         "</body></html>"); 
         
     }
-    
+    /**
+     * The run method is used to start a session in the Jackrabbit repository and stores
+     * the data recieved in the request as a file; It also verifies that if the Node of the
+     * determined file extension exists, then store the file in that node, or else if the extension
+     * of the file is unkown, store it in an Unkown node;
+     * Also, if the file is an Image, generates a string with the "<image src ="InputFile"/>" of the
+     * file that it stored in the node.
+     * 
+     * @param file      
+     * @param fileName
+     * @throws RepositoryException
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public void run(InputStream file,String fileName) throws RepositoryException, FileNotFoundException, IOException{
         String url = "http://localhost:8080/rmi";
         Repository repository = JcrUtils.getRepository(url);
@@ -132,12 +156,21 @@ public class FileServlet extends HttpServlet {
             Unknown.setProperty(fileName, file);
             jcrSession.save();
         }
-        // preorder(ImagesNode, fileName);}
         OptList = impression(ImagesNode);
         System.out.println(OptList);
         jcrSession.logout();
         
       }
+    
+     /**
+      * Method used to fill the string of each option of the DropDownList with the files
+      * that it finds in the Images node and place it in the string used to print the HTML
+      * code.
+      * 
+      * @param n        Node in wich are all the image files stored.
+      * @return         string with the options of the files that are stored in this node
+      * @throws         RepositoryException 
+      */
      public String impression(Node n) throws RepositoryException{
        String auxiliar = "";
        String output="";
@@ -158,7 +191,12 @@ public class FileServlet extends HttpServlet {
         return output;
 
     }
-     
+    /**
+     * Gets extension of the String file recived
+     * 
+     * @param file      String that has the complete name of the file; i.e "file.jpg".
+     * @return          String with the extension of the file; i.e ".jpg"
+     */ 
     public String fileExt(String file){
         String fileExt = null;
         if(file.contains(".")){
@@ -170,6 +208,11 @@ public class FileServlet extends HttpServlet {
         return fileExt;  
     }
     
+    /**
+     * Gets the name of the String file recived
+     * @param file      String that ahs the complete name of the file; i.e "file.jpg"
+     * @return          String with the name of the file; i.e "file"
+     */
     public String fileName(String file){
         String fileName = null;
         if(file.contains(".")){
@@ -180,6 +223,13 @@ public class FileServlet extends HttpServlet {
         return fileName;
     }
     
+    /**
+     * Gets the file of the file recived as the request from the JSP 
+     * and returns the full name of the file.
+     * 
+     * @param part      Full file recived from the request.
+     * @return          String with the full name of the file.
+     */
     private String getFileName(final Part part) {
         final String partHeader = part.getHeader("content-disposition");
         LOGGER.log(Level.INFO, "Part Header = {0}", partHeader);

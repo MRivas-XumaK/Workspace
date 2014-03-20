@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -25,8 +19,15 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.jackrabbit.commons.JcrUtils;
 
 /**
- *
- * @author xumak-pc
+ * DropdownServlet is the class used for the response of the FileServlet to view the images
+ * already stored in the Jackrabbit repository; It uses Base64 Encoding to display the image in
+ * HTML, this means that is not necesary to have the path of the image stored in the localhost 
+ * machine of the Jackrabbit repository;
+ * In this case, it is not necesary to use the MultipartConfig and by this its not restricted 
+ * to use the doPost method.
+ * 
+ * @author Mario Rolando Rivas 
+ * 
  */
 @WebServlet(urlPatterns = {"/DropDowServlet"})
 public class DropDowServlet extends HttpServlet {
@@ -34,6 +35,11 @@ public class DropDowServlet extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
+     * 
+     * In this method also prints the html for the web browser as the response parameter in the
+     * docType String. It is also setting session in the jackrabbit repository http://localhost:8080/rmi
+     * and starts using data from the repository with the session stablished. This data is then printed
+     * in the html docType as part of the application.
      *
      * @param request servlet request
      * @param response servlet response
@@ -68,11 +74,15 @@ public class DropDowServlet extends HttpServlet {
             "<form action=\"DropDowServlet\" method=\"POST\">" +
                 "<center><select name =\"DropList\" onchange=\"this.form.submit()\">" + OptList+
                 "</select></center>" +
-            "</form>");/* +
-        "</body></html>");*/
-        /* Obtengo el parametro que el usuario ingreso, para desplegar la imagen*/
+            "</form>");
+        
+        /**
+         * Preparing data from the repository to be encoded  in Base64 Encoding of java 
+         * so then it can be used in the <img src=data:image/jpeg;base64 /> tag and concat it in
+         * the HTML code already generated.
+         */
+        
         String file = request.getParameter("DropList");
-        System.out.println(file);
         int read = 0;
         InputStream TheFile = impression(file,ImagesNode);
         byte[] bytes = new byte[TheFile.available()];
@@ -91,18 +101,23 @@ public class DropDowServlet extends HttpServlet {
                 "</body></html>");
     }
     
+    /**
+     * Enlists all the image file names located in the Images node of the Jackrabbit repository on the DropDown List
+     * element of the HTML code and returns them as a single String.
+     * 
+     * @param n     The node that i want to locate and enlist the files.
+     * @return
+     * @throws      RepositoryException 
+     */
     public String listing(Node n) throws RepositoryException{
-       String auxiliar = "";
-       String output="<option value=\"\"></option>";
+       String output="<option selected=\"selected\" disabled=\"disabled\">Select a picture</option>";
        String name;
        Property aux;
        PropertyIterator auxiliar1 = n.getProperties();
        if(auxiliar1.hasNext()){
            while(auxiliar1.getPosition() < auxiliar1.getSize()){
                aux = auxiliar1.nextProperty();
-               //aux1.next();
                name = aux.getName();
-               //System.out.println(auxiliar);
                if(!name.equals("jcr:primaryType")){
                     output = output + "<option value=\"" + name +  "\">"+ name + "</option>" ;
                }
@@ -111,8 +126,19 @@ public class DropDowServlet extends HttpServlet {
         return output;
 
     }
+    
+    /**
+     * Prepares the image in a InputStream and verifies that, if there is no image in the request, then place 
+     * the first image available as an InputStream; Else if the NodeName is not null, search the file and place 
+     * it in the InputStream and return it.
+     * 
+     * @param NodeName      Name of the file recived in the DropDownList image checked.
+     * @param n             The node in which i want to obtain the file.
+     * @return
+     * @throws RepositoryException 
+     */
+    
     public InputStream impression(String NodeName, Node n) throws RepositoryException{
-       String output="";
        String name;
        Property aux;
        InputStream file= null;
@@ -129,7 +155,6 @@ public class DropDowServlet extends HttpServlet {
            }
        }else if(NodeName == null){
            aux = auxiliar1.nextProperty();
-           System.out.println("property= " + aux.getName());
            file = n.getProperty(aux.getName()).getStream();
        }
         return file;
