@@ -49,56 +49,66 @@ public class DropDowServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, RepositoryException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String title ="Select a file to display<br>";
-        
-        
-        String url = "http://localhost:8080/rmi";
-        Repository repository = JcrUtils.getRepository(url);
-        SimpleCredentials creds = new SimpleCredentials("admin","admin".toCharArray());
-        Session jcrSession = repository.login(creds, "default");
-        
-        Node root = jcrSession.getRootNode();
-        Node ImagesNode = root.getNode("Images");
-        String OptList = listing(ImagesNode);
-        
-        
-        
-        String docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
-               "transitional//en\">\n";
-        out.println(docType + "<html>\n"+
-        "<head><title>"+ title +"</title></head>\n"+
-        "<body bgcolor=\"#f0f0f0\">\n"+
-            "<h1 align=\"center\">"+ title +"</h1>\n"+
-            "<form action=\"DropDowServlet\" method=\"POST\">" +
-                "<center><select name =\"DropList\" onchange=\"this.form.submit()\">" + OptList+
-                "</select></center>" +
-            "</form>");
-        
-        /**
-         * Preparing data from the repository to be encoded  in Base64 Encoding of java 
-         * so then it can be used in the <img src=data:image/jpeg;base64 /> tag and concat it in
-         * the HTML code already generated.
-         */
-        
-        String file = request.getParameter("DropList");
-        int read = 0;
-        InputStream TheFile = impression(file,ImagesNode);
-        byte[] bytes = new byte[TheFile.available()];
-        TheFile.read(bytes);
-        
-        byte[] encoded = Base64.encodeBase64(bytes);
-        String encodedString = new String(encoded);
-        System.out.println("encodedBytes: "+ encodedString);
-        PrintWriter writeOut= response.getWriter();
-        
-        out.println(docType + 
-                "<center><img src=\"data:image/jpeg;base64,"+ encodedString +"\" hieght=20% width=20%/></center>"+
-                "<form action=\"index.jsp\">\n" +
-                    "<center><input type=\"submit\" value=\"Start\"></center>\n" +
-                "</form>" +
-                "</body></html>");
+        if(response != null){
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            
+            if(request != null){
+                String title ="Select a file to display<br>";
+
+                try{
+                    String url = "http://localhost:8080/rmi";
+                    Repository repository = JcrUtils.getRepository(url);
+                    SimpleCredentials creds = new SimpleCredentials("admin","admin".toCharArray());
+                    Session jcrSession = repository.login(creds, "default");
+
+                    Node root = jcrSession.getRootNode();
+                    Node ImagesNode = root.getNode("Images");
+                    String OptList = listing(ImagesNode);
+
+
+
+                    String docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
+                           "transitional//en\">\n";
+                    out.println(docType + "<html>\n"+
+                    "<head><title>"+ title +"</title></head>\n"+
+                    "<body bgcolor=\"#f0f0f0\">\n"+
+                        "<h1 align=\"center\">"+ title +"</h1>\n"+
+                        "<form action=\"DropDowServlet\" method=\"POST\">" +
+                            "<center><select name =\"DropList\" onchange=\"this.form.submit()\">" + OptList+
+                            "</select></center>" +
+                        "</form>");
+                    String file = request.getParameter("DropList");
+                    int read = 0;
+                    InputStream TheFile = impression(file,ImagesNode);
+                    byte[] bytes = new byte[TheFile.available()];
+                    TheFile.read(bytes);
+
+                    byte[] encoded = Base64.encodeBase64(bytes);
+                    String encodedString = new String(encoded);
+                    System.out.println("encodedBytes: "+ encodedString);
+                    PrintWriter writeOut= response.getWriter();
+
+                    out.println(docType + 
+                            "<center><img src=\"data:image/jpeg;base64,"+ encodedString +"\" hieght=20% width=20%/></center>"+
+                            "<form action=\"index.jsp\">\n" +
+                                "<center><input type=\"submit\" value=\"Start\"></center>\n" +
+                            "</form>" +
+                            "</body></html>");
+                }catch(RepositoryException re){
+                    System.err.println("ERROR: Repository not found, perhaps the repository is not available.");
+                    out.println("ERROR: The repository is not available at the moment");
+                    
+                }
+            }else{
+                out.println("ERROR: File might not be located in the repository, or it is null"
+                    + "<form action=\"index.jsp\">\n" +
+                        "<center><input type=\"submit\" value=\"Start\"></center>\n" +
+                      "</form>");
+            }
+        }else{
+            System.err.println("ERROR: Response found as null.");
+        }
     }
     
     /**
@@ -113,15 +123,20 @@ public class DropDowServlet extends HttpServlet {
        String output="<option selected=\"selected\" disabled=\"disabled\">Select a picture</option>";
        String name;
        Property aux;
-       PropertyIterator auxiliar1 = n.getProperties();
-       if(auxiliar1.hasNext()){
-           while(auxiliar1.getPosition() < auxiliar1.getSize()){
-               aux = auxiliar1.nextProperty();
-               name = aux.getName();
-               if(!name.equals("jcr:primaryType")){
-                    output = output + "<option value=\"" + name +  "\">"+ name + "</option>" ;
-               }
-           }
+       
+       if(n != null){
+            PropertyIterator auxiliar1 = n.getProperties();
+            if(auxiliar1.hasNext()){
+                while(auxiliar1.getPosition() < auxiliar1.getSize()){
+                    aux = auxiliar1.nextProperty();
+                    name = aux.getName();
+                    if(!name.equals("jcr:primaryType")){
+                         output = output + "<option value=\"" + name +  "\">"+ name + "</option>" ;
+                    }
+                }
+            }
+       }else{
+           System.err.println("ERROR: Node found as null, or does not exists");
        }
         return output;
 
@@ -142,20 +157,24 @@ public class DropDowServlet extends HttpServlet {
        String name;
        Property aux;
        InputStream file= null;
-       PropertyIterator auxiliar1 = n.getProperties();
-       if(auxiliar1.hasNext() && (NodeName != null)){
-           while(auxiliar1.getPosition() < auxiliar1.getSize()){
-               aux = auxiliar1.nextProperty();
-               name = aux.getName();
-               if(!name.equals("jcr:primaryType")){
-                    if(name.equals(NodeName)){
-                        file = n.getProperty(NodeName).getStream();
+       if(n != null){
+            PropertyIterator auxiliar1 = n.getProperties();
+            if(auxiliar1.hasNext() && (NodeName != null)){
+                while(auxiliar1.getPosition() < auxiliar1.getSize()){
+                    aux = auxiliar1.nextProperty();
+                    name = aux.getName();
+                    if(!name.equals("jcr:primaryType")){
+                         if(name.equals(NodeName)){
+                             file = n.getProperty(NodeName).getStream();
+                         }
                     }
-               }
-           }
-       }else if(NodeName == null){
-           aux = auxiliar1.nextProperty();
-           file = n.getProperty(aux.getName()).getStream();
+                }
+            }else if(NodeName == null){
+                aux = auxiliar1.nextProperty();
+                file = n.getProperty(aux.getName()).getStream();
+            }
+       }else{
+           System.err.println("ERROR: Node does not exists.");
        }
         return file;
 
@@ -196,15 +215,4 @@ public class DropDowServlet extends HttpServlet {
             Logger.getLogger(DropDowServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

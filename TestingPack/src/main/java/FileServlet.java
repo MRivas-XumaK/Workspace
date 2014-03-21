@@ -62,54 +62,85 @@ public class FileServlet extends HttpServlet {
       */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, RepositoryException {
-        final Part filePart = request.getPart("file");
-        String filename = getFileName(filePart);
-          
-        String docType;
-        String title ="Select a file to display<br>";
-        
-        InputStream filecontent = null;
-        InputStream emptyFIle = null;
-        OutputStream out = null;
-        
-        filecontent = filePart.getInputStream();
-        emptyFIle = filePart.getInputStream();
-        
-        run(filecontent,filename);
-        out = new FileOutputStream(new File(path + File.separator
-                    + filename));
-        int read = 0;
-        byte[] bytes = new byte[emptyFIle.available()];    //image size
+        if(response != null){
+             PrintWriter writeOut= response.getWriter();
+            
+            if(request != null){
+                final Part filePart = request.getPart("file");
+                String filename = getFileName(filePart);
 
-        while ((read = emptyFIle.read(bytes)) != -1) {
-            out.write(bytes, 0, read);
+                String docType;
+                String title ="Select a file to display<br>";
+
+                InputStream filecontent = filePart.getInputStream();;
+                InputStream emptyFIle = filePart.getInputStream();;
+                OutputStream out = null;
+                try{
+                    run(filecontent,filename);
+                    out = new FileOutputStream(new File(path + File.separator
+                            + filename));
+                    int read = 0;
+                    byte[] bytes = new byte[emptyFIle.available()];    //image size
+
+                    while ((read = emptyFIle.read(bytes)) != -1) {
+                        out.write(bytes, 0, read);
+                    }
+                    byte[] encoded = Base64.encodeBase64(bytes);
+                    String encodedString = new String(encoded);
+                    System.out.println("encodedBytes: "+ encodedString);
+
+
+
+                    /*response.setContentType("image/jpeg");
+                    response.setContentLength(bytes.length);
+                    System.out.println(bytes);
+                    response.getOutputStream().write(bytes);*/
+                    docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
+                           "transitional//en\">\n";
+                    writeOut.println(docType + "<html>\n"+
+                    "<head><title>"+ title +"</title></head>\n"+
+                    "<body bgcolor=\"#f0f0f0\">\n"+
+                        "<h1 align=\"center\">"+ title +"</h1>\n"+
+                        "<form action=\"DropDowServlet\" method=\"POST\">" +
+                            "<center><select name =\"DropList\" onchange=\"this.form.submit()\">" + OptList+
+                            "</select></center>" +
+                        "</form>" +
+                        "<center><img src=\"data:image/jpeg;base64,"+ encodedString +"\" hieght=20% width=20%/></center>"+
+                        "<form action=\"index.jsp\">\n" +
+                            "<center><input type=\"submit\" value=\"Start\"></center>\n" +
+                        "</form>" +
+                    "</body></html>");
+                } catch(FileNotFoundException fe){
+                    System.err.println("ERROR: Found empty file to upload.");
+                    
+                    docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
+                       "transitional//en\">\n";
+                    
+                    writeOut.println(docType + "ERROR: File Upload failed."
+                    + "You did not specify a file to upload." 
+                    + "<form action=\"index.jsp\">\n" +
+                        "<center><input type=\"submit\" value=\"Start\"></center>\n" +
+                      "</form>");
+                }
+                
+            }else{
+                writeOut.println("<br/> ERROR: ");
+                writeOut.println("You either did not specify a file to upload or are "
+                    + "trying to upload a file to a protected or nonexistent "
+                    + "location. +"
+                    + "<form action=\"index.jsp\">\n" +
+                        "<center><input type=\"submit\" value=\"Start\"></center>\n" +
+                      "</form>");
+                System.out.println("ERROR: Request found as null");
+            }
+        }else{
+            System.out.println("ERROR: Response detected as null, or data is corrupted");
         }
-        byte[] encoded = Base64.encodeBase64(bytes);
-        String encodedString = new String(encoded);
-        System.out.println("encodedBytes: "+ encodedString);
-        PrintWriter writeOut= response.getWriter();
-
-        /*response.setContentType("image/jpeg");
-        response.setContentLength(bytes.length);
-        System.out.println(bytes);
-        response.getOutputStream().write(bytes);*/
-        docType = "<!doctype html public \"-//w3c//dtd html 4.0 "+
-               "transitional//en\">\n";
-        writeOut.println(docType + "<html>\n"+
-        "<head><title>"+ title +"</title></head>\n"+
-        "<body bgcolor=\"#f0f0f0\">\n"+
-            "<h1 align=\"center\">"+ title +"</h1>\n"+
-            "<form action=\"DropDowServlet\" method=\"POST\">" +
-                "<center><select name =\"DropList\" onchange=\"this.form.submit()\">" + OptList+
-                "</select></center>" +
-            "</form>" +
-            "<center><img src=\"data:image/jpeg;base64,"+ encodedString +"\" hieght=20% width=20%/></center>"+
-            "<form action=\"index.jsp\">\n" +
-                "<center><input type=\"submit\" value=\"Start\"></center>\n" +
-            "</form>" +
-        "</body></html>"); 
+        
         
     }
+    
+    
     /**
      * The run method is used to start a session in the Jackrabbit repository and stores
      * the data recieved in the request as a file; It also verifies that if the Node of the
@@ -125,40 +156,53 @@ public class FileServlet extends HttpServlet {
      * @throws IOException 
      */
     public void run(InputStream file,String fileName) throws RepositoryException, FileNotFoundException, IOException{
-        String url = "http://localhost:8080/rmi";
-        Repository repository = JcrUtils.getRepository(url);
-        SimpleCredentials creds = new SimpleCredentials("admin","admin".toCharArray());
-        Session jcrSession = repository.login(creds, "default");
-        
-        Node root = jcrSession.getRootNode();
-        Node ImagesNode = root.getNode("Images");
-        Node MusicNode = root.getNode("Music");
-        Node DocsNode = root.getNode("Documents");
-        Node Unknown = root.getNode("Unknown");
-        
-        String nameOfFile = fileName(fileName);
-        String extOfFIle = fileExt(fileName);
-        System.out.println("Nodes created");
-        if(extOfFIle.equals(".png") || extOfFIle.equals(".jpg")){
-           System.out.println("Pictures");
-           ImagesNode.setProperty(fileName, file);
-           jcrSession.save();
-        }else if(extOfFIle.equals(".mp3") || extOfFIle.equals(".wma") || extOfFIle.equals(".wav")){
-            System.out.println("Music");
-            MusicNode.setProperty(fileName, file);
-            jcrSession.save();
-        }else if(extOfFIle.equals(".txt") || extOfFIle.equals(".doc") || extOfFIle.equals(".docx") || extOfFIle.equals(".pdf") ){
-             System.out.println("Documents");
-            DocsNode.setProperty(fileName, file);
-            jcrSession.save();
-        }else{
-             System.out.println("Unknown");
-            Unknown.setProperty(fileName, file);
-            jcrSession.save();
+        try{
+            String url = "http://localhost:8080/rmi";
+            Repository repository = JcrUtils.getRepository(url);
+            SimpleCredentials creds = new SimpleCredentials("admin","admin".toCharArray());
+            Session jcrSession = repository.login(creds, "default");
+
+            Node root = jcrSession.getRootNode();
+            Node ImagesNode = root.getNode("Images");
+            Node MusicNode = root.getNode("Music");
+            Node DocsNode = root.getNode("Documents");
+            Node Unknown = root.getNode("Unknown");
+
+            if(!fileName.equals("")){
+                String nameOfFile = fileName(fileName);
+                String extOfFIle = fileExt(fileName);
+                System.out.println("Nodes created");
+                if(file != null){
+                    if(extOfFIle.equals(".png") || extOfFIle.equals(".jpg")){
+                       System.out.println("Pictures");
+                       ImagesNode.setProperty(fileName, file);
+                       jcrSession.save();
+                    }else if(extOfFIle.equals(".mp3") || extOfFIle.equals(".wma") || extOfFIle.equals(".wav")){
+                        System.out.println("Music");
+                        MusicNode.setProperty(fileName, file);
+                        jcrSession.save();
+                    }else if(extOfFIle.equals(".txt") || extOfFIle.equals(".doc") || extOfFIle.equals(".docx") || extOfFIle.equals(".pdf") ){
+                         System.out.println("Documents");
+                        DocsNode.setProperty(fileName, file);
+                        jcrSession.save();
+                    }else{
+                         System.out.println("Unknown");
+                        Unknown.setProperty(fileName, file);
+                        jcrSession.save();
+                    }
+                    OptList = impression(ImagesNode);
+                    System.out.println(OptList);
+                    jcrSession.logout();
+            }else{
+                System.err.println("ERROR: InputStream found as null. File might be corrrupted at Part method call or it is not a file.");
+            }
+          }else{
+            System.err.println("ERROR: File without a name or not in a valid format.");
+          }
+        }catch(RepositoryException re){
+            System.err.println("ERROR: Could not acces the repository. The repository might be down.");
         }
-        OptList = impression(ImagesNode);
-        System.out.println(OptList);
-        jcrSession.logout();
+        
         
       }
     
@@ -172,23 +216,24 @@ public class FileServlet extends HttpServlet {
       * @throws         RepositoryException 
       */
      public String impression(Node n) throws RepositoryException{
-       String auxiliar = "";
        String output="";
        String name;
        Property aux;
-       PropertyIterator auxiliar1 = n.getProperties();
-       if(auxiliar1.hasNext()){
-           while(auxiliar1.getPosition() < auxiliar1.getSize()){
-               aux = auxiliar1.nextProperty();
-               //aux1.next();
-               name = aux.getName();
-               //System.out.println(auxiliar);
-               if(!name.equals("jcr:primaryType")){
-                    output = output + "<option value=\"" + name +  "\">"+ name + "</option>" ;
-               }
-           }
+       if(n != null){
+        PropertyIterator auxiliar1 = n.getProperties();
+        if(auxiliar1.hasNext()){
+            while(auxiliar1.getPosition() < auxiliar1.getSize()){
+                aux = auxiliar1.nextProperty();
+                name = aux.getName();
+                if(!name.equals("jcr:primaryType")){
+                     output = output + "<option value=\"" + name +  "\">"+ name + "</option>" ;
+                }
+            }
+        }
+       }else{
+           System.out.println("ERROR: Node not found in the repository.");
        }
-        return output;
+       return output;
 
     }
     /**
@@ -198,8 +243,8 @@ public class FileServlet extends HttpServlet {
      * @return          String with the extension of the file; i.e ".jpg"
      */ 
     public String fileExt(String file){
-        String fileExt = null;
-        if(file.contains(".")){
+        String fileExt = "";
+        if(file.contains(".") && !file.equals("")){
             fileExt = file.substring(file.indexOf("."), file.length());
             
         }else{
@@ -214,8 +259,8 @@ public class FileServlet extends HttpServlet {
      * @return          String with the name of the file; i.e "file"
      */
     public String fileName(String file){
-        String fileName = null;
-        if(file.contains(".")){
+        String fileName = "";
+        if(file.contains(".") && !file.equals("")){
             fileName = file.substring(0, file.indexOf("."));
         }else{
             System.out.println(file + "Is not a file");
@@ -278,17 +323,4 @@ public class FileServlet extends HttpServlet {
              Logger.getLogger(FileServlet.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
-
-
 }
