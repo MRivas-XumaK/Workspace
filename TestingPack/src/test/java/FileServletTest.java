@@ -1,17 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
-import java.util.Collection;
-import java.util.Locale;
 import javax.jcr.Node;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.junit.After;
@@ -23,7 +11,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author xumak-pc
+ * @author Mario RIvas
  */
 public class FileServletTest {
     
