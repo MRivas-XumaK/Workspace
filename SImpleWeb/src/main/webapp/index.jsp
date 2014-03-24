@@ -8,13 +8,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <form action="HelloForm" method="GET">
-            First Name: <input type="text" name="first_name">
+        <h1>File Upload!</h1>
+        <form action="FileServlet" method="POST" enctype="multipart/form-data" >
+            File Name: <input type="text" value="/tmp" name="destination">
             <br>
-            Last Name: <input type="file" name="last_name"/>
+            File: <input type="file"  name="file" id="file"/>
             <br>
-            <input type="submit" value="Submit"/>
+            <input type="submit" value="Upload" name="upload" id="upload"/>
         </form>
     </body>
 </html>
