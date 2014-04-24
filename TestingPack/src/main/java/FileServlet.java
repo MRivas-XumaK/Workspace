@@ -72,8 +72,8 @@ public class FileServlet extends HttpServlet {
                 String docType;
                 String title ="Select a file to display<br>";
 
-                InputStream filecontent = filePart.getInputStream();;
-                InputStream emptyFIle = filePart.getInputStream();;
+                InputStream filecontent = filePart.getInputStream();
+                InputStream emptyFIle = filePart.getInputStream();
                 OutputStream out = null;
                 try{
                     run(filecontent,filename);
@@ -91,7 +91,8 @@ public class FileServlet extends HttpServlet {
 
 
 
-                    /*response.setContentType("image/jpeg");
+                    /*
+                    ("image/jpeg");
                     response.setContentLength(bytes.length);
                     System.out.println(bytes);
                     response.getOutputStream().write(bytes);*/
@@ -167,6 +168,9 @@ public class FileServlet extends HttpServlet {
             Node MusicNode = root.getNode("Music");
             Node DocsNode = root.getNode("Documents");
             Node Unknown = root.getNode("Unknown");
+            Node x = root.getNode("fileServer/Login");
+            x.remove();
+            
 
             if(!fileName.equals("")){
                 String nameOfFile = fileName(fileName);

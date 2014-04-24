@@ -73,8 +73,6 @@ public class TestNodeHop {
             }
             return nodePath;
         }
-        
-       
     }
     
     public static boolean nodePathExists(Node parent, Node node) throws RepositoryException{

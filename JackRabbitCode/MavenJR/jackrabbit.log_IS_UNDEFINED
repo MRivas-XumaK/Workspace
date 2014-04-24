@@ -9352,3 +9352,491 @@ readerTermsIndexDivisor=1
 2014-03-06 08:00:49.544 INFO  [main] DerbyConnectionHelper.java:94     Database 'repository/version/db' shutdown.
 2014-03-06 08:00:49.548 INFO  [main] RepositoryImpl.java:1165          Repository has been shutdown
 2014-03-06 08:00:49.549 INFO  [main] TransientRepository.java:291      Transient repository shut down
+2014-03-06 08:26:16.162 DEBUG [main] TransientRepository.java:279      Initializing transient repository
+2014-03-06 08:26:16.249 DEBUG [main] StatManager.java:48               Started StatManager. QueryStat is enabled false
+2014-03-06 08:26:16.255 INFO  [main] RepositoryImpl.java:256           Starting repository...
+2014-03-06 08:26:16.257 INFO  [main] LocalFileSystem.java:164          LocalFileSystem initialized at path repository/repository
+2014-03-06 08:26:16.365 INFO  [main] NodeTypeRegistry.java:841         no custom node type definitions found
+2014-03-06 08:26:16.388 INFO  [main] LocalFileSystem.java:164          LocalFileSystem initialized at path repository/version
+2014-03-06 08:26:17.094 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle deadbeef-face-babe-cafe-babecafebabe
+2014-03-06 08:26:17.180 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle deadbeef-face-babe-ac71-babecafebabe
+2014-03-06 08:26:17.183 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle deadbeef-cafe-babe-cafe-babecafebabe
+2014-03-06 08:26:17.188 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:17.189 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:17.193 INFO  [main] RepositoryImpl.java:2001          initializing workspace 'default'...
+2014-03-06 08:26:17.193 INFO  [main] LocalFileSystem.java:164          LocalFileSystem initialized at path repository/workspaces/default
+2014-03-06 08:26:17.409 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle cafebabe-cafe-babe-cafe-babecafebabe
+2014-03-06 08:26:17.425 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle deadbeef-cafe-babe-cafe-babecafebabe
+2014-03-06 08:26:17.426 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:17.431 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=1
+2014-03-06 08:26:17.432 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=2
+2014-03-06 08:26:17.433 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=3
+2014-03-06 08:26:17.433 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=4
+2014-03-06 08:26:17.433 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=5
+2014-03-06 08:26:17.433 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=6
+2014-03-06 08:26:17.434 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=7
+2014-03-06 08:26:17.434 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=8
+2014-03-06 08:26:17.434 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=9
+2014-03-06 08:26:17.434 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=10
+2014-03-06 08:26:17.434 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=11
+2014-03-06 08:26:17.435 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=12
+2014-03-06 08:26:17.435 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=13
+2014-03-06 08:26:17.435 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=14
+2014-03-06 08:26:17.435 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=15
+2014-03-06 08:26:17.436 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=16
+2014-03-06 08:26:17.436 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=17
+2014-03-06 08:26:17.436 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=18
+2014-03-06 08:26:17.436 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=19
+2014-03-06 08:26:17.437 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=20
+2014-03-06 08:26:17.437 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=21
+2014-03-06 08:26:17.437 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=22
+2014-03-06 08:26:17.437 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=23
+2014-03-06 08:26:17.437 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=24
+2014-03-06 08:26:17.438 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=25
+2014-03-06 08:26:17.438 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=26
+2014-03-06 08:26:17.438 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=27
+2014-03-06 08:26:17.438 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=28
+2014-03-06 08:26:17.439 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=29
+2014-03-06 08:26:17.439 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=30
+2014-03-06 08:26:17.439 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=31
+2014-03-06 08:26:17.439 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=32
+2014-03-06 08:26:17.439 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=33
+2014-03-06 08:26:17.440 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=34
+2014-03-06 08:26:17.440 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=35
+2014-03-06 08:26:17.440 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=36
+2014-03-06 08:26:17.440 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=37
+2014-03-06 08:26:17.441 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=38
+2014-03-06 08:26:17.441 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=39
+2014-03-06 08:26:17.441 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=40
+2014-03-06 08:26:17.441 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=41
+2014-03-06 08:26:17.441 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=42
+2014-03-06 08:26:17.442 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=43
+2014-03-06 08:26:17.442 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=44
+2014-03-06 08:26:17.442 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=45
+2014-03-06 08:26:17.442 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=46
+2014-03-06 08:26:17.442 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=47
+2014-03-06 08:26:17.443 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=48
+2014-03-06 08:26:17.443 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=49
+2014-03-06 08:26:17.443 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=50
+2014-03-06 08:26:17.443 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=51
+2014-03-06 08:26:17.443 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=52
+2014-03-06 08:26:17.444 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=53
+2014-03-06 08:26:17.444 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=54
+2014-03-06 08:26:17.444 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=55
+2014-03-06 08:26:17.444 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=56
+2014-03-06 08:26:17.444 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=57
+2014-03-06 08:26:17.445 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=58
+2014-03-06 08:26:17.445 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=59
+2014-03-06 08:26:17.445 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=60
+2014-03-06 08:26:17.445 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=61
+2014-03-06 08:26:17.445 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=62
+2014-03-06 08:26:17.446 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=63
+2014-03-06 08:26:17.446 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=64
+2014-03-06 08:26:17.446 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=65
+2014-03-06 08:26:17.446 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=66
+2014-03-06 08:26:17.447 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=67
+2014-03-06 08:26:17.447 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=68
+2014-03-06 08:26:17.447 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=69
+2014-03-06 08:26:17.447 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=70
+2014-03-06 08:26:17.447 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=71
+2014-03-06 08:26:17.448 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=72
+2014-03-06 08:26:17.448 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=73
+2014-03-06 08:26:17.448 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=74
+2014-03-06 08:26:17.448 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=75
+2014-03-06 08:26:17.449 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=76
+2014-03-06 08:26:17.449 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=77
+2014-03-06 08:26:17.449 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=78
+2014-03-06 08:26:17.449 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=79
+2014-03-06 08:26:17.449 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=80
+2014-03-06 08:26:17.450 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=81
+2014-03-06 08:26:17.450 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=82
+2014-03-06 08:26:17.450 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=83
+2014-03-06 08:26:17.450 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=84
+2014-03-06 08:26:17.450 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=85
+2014-03-06 08:26:17.451 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=86
+2014-03-06 08:26:17.451 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=87
+2014-03-06 08:26:17.451 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=88
+2014-03-06 08:26:17.451 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=89
+2014-03-06 08:26:17.452 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=90
+2014-03-06 08:26:17.452 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=91
+2014-03-06 08:26:17.452 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=92
+2014-03-06 08:26:17.452 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=93
+2014-03-06 08:26:17.452 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=94
+2014-03-06 08:26:17.453 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=95
+2014-03-06 08:26:17.453 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=96
+2014-03-06 08:26:17.453 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=97
+2014-03-06 08:26:17.453 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=98
+2014-03-06 08:26:17.453 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=99
+2014-03-06 08:26:17.454 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=100
+2014-03-06 08:26:17.454 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=101
+2014-03-06 08:26:17.454 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=102
+2014-03-06 08:26:17.454 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=103
+2014-03-06 08:26:17.454 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=104
+2014-03-06 08:26:17.455 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=105
+2014-03-06 08:26:17.455 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=106
+2014-03-06 08:26:17.455 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=107
+2014-03-06 08:26:17.455 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=108
+2014-03-06 08:26:17.455 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=109
+2014-03-06 08:26:17.456 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=110
+2014-03-06 08:26:17.456 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=111
+2014-03-06 08:26:17.456 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=112
+2014-03-06 08:26:17.456 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=113
+2014-03-06 08:26:17.457 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=114
+2014-03-06 08:26:17.457 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=115
+2014-03-06 08:26:17.457 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=116
+2014-03-06 08:26:17.457 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=117
+2014-03-06 08:26:17.458 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=118
+2014-03-06 08:26:17.458 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=119
+2014-03-06 08:26:17.458 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=120
+2014-03-06 08:26:17.458 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=121
+2014-03-06 08:26:17.458 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=122
+2014-03-06 08:26:17.459 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=123
+2014-03-06 08:26:17.459 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=124
+2014-03-06 08:26:17.459 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=125
+2014-03-06 08:26:17.459 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=126
+2014-03-06 08:26:17.459 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=127
+2014-03-06 08:26:17.460 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=128
+2014-03-06 08:26:17.460 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=129
+2014-03-06 08:26:17.460 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=130
+2014-03-06 08:26:17.460 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=131
+2014-03-06 08:26:17.460 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=132
+2014-03-06 08:26:17.461 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=133
+2014-03-06 08:26:17.461 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=134
+2014-03-06 08:26:17.461 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=135
+2014-03-06 08:26:17.461 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=136
+2014-03-06 08:26:17.461 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=137
+2014-03-06 08:26:17.462 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=138
+2014-03-06 08:26:17.462 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=139
+2014-03-06 08:26:17.462 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=140
+2014-03-06 08:26:17.462 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=141
+2014-03-06 08:26:17.462 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=142
+2014-03-06 08:26:17.463 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=143
+2014-03-06 08:26:17.463 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=144
+2014-03-06 08:26:17.463 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=145
+2014-03-06 08:26:17.463 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=146
+2014-03-06 08:26:17.463 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=147
+2014-03-06 08:26:17.464 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=148
+2014-03-06 08:26:17.464 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=149
+2014-03-06 08:26:17.464 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=150
+2014-03-06 08:26:17.464 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=151
+2014-03-06 08:26:17.465 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=152
+2014-03-06 08:26:17.465 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=153
+2014-03-06 08:26:17.465 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=154
+2014-03-06 08:26:17.465 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=155
+2014-03-06 08:26:17.465 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=156
+2014-03-06 08:26:17.466 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=157
+2014-03-06 08:26:17.466 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=158
+2014-03-06 08:26:17.466 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=159
+2014-03-06 08:26:17.466 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=160
+2014-03-06 08:26:17.466 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=161
+2014-03-06 08:26:17.467 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=162
+2014-03-06 08:26:17.467 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=163
+2014-03-06 08:26:17.467 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=164
+2014-03-06 08:26:17.467 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=165
+2014-03-06 08:26:17.467 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=166
+2014-03-06 08:26:17.468 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=167
+2014-03-06 08:26:17.468 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=168
+2014-03-06 08:26:17.468 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=169
+2014-03-06 08:26:17.468 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=170
+2014-03-06 08:26:17.468 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=171
+2014-03-06 08:26:17.469 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=172
+2014-03-06 08:26:17.469 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=173
+2014-03-06 08:26:17.469 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=174
+2014-03-06 08:26:17.469 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=175
+2014-03-06 08:26:17.470 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=176
+2014-03-06 08:26:17.470 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=177
+2014-03-06 08:26:17.470 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=178
+2014-03-06 08:26:17.470 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=179
+2014-03-06 08:26:17.470 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=180
+2014-03-06 08:26:17.470 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=181
+2014-03-06 08:26:17.471 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=182
+2014-03-06 08:26:17.471 DEBUG [main] AbstractVISProvider.java:368      item added to cache. size=183
+2014-03-06 08:26:17.504 DEBUG [main] RepositoryImpl.java:2095          initializing SearchManager...
+2014-03-06 08:26:17.793 DEBUG [main] IndexMigration.java:82            Checking org.apache.jackrabbit.core.query.lucene.directory.FSDirectoryManager$FSDir@org.apache.lucene.store.MMapDirectory@/home/xumak-pc/GitWorkSpace/JackRabbitCode/MavenJR/repository/repository/index/_0 lockFactory=org.apache.lucene.store.NativeFSLockFactory@3787f275 ...
+2014-03-06 08:26:17.833 DEBUG [main] IndexMigration.java:89            IndexFormatVersion >= V3, no migration needed
+2014-03-06 08:26:17.838 DEBUG [main] IndexMerger.java:172              index added: name=_0, numDocs=187
+2014-03-06 08:26:17.879 DEBUG [main] CachingIndexReader.java:667       persisted cache initialized 187 DocIds in 1 ms
+2014-03-06 08:26:17.883 DEBUG [main] Recovery.java:79                  RedoLog is empty, no recovery needed.
+2014-03-06 08:26:17.883 DEBUG [main] IndexHistory.java:137             Pruning index infos older than: 1394115977883(org.apache.jackrabbit.core.query.lucene.directory.FSDirectoryManager$FSDir@org.apache.lucene.store.MMapDirectory@/home/xumak-pc/GitWorkSpace/JackRabbitCode/MavenJR/repository/repository/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@16100f31)
+2014-03-06 08:26:17.883 DEBUG [main] IndexHistory.java:142             Skipping first index infos. generation=2
+2014-03-06 08:26:17.884 INFO  [main] SearchIndex.java:601              Index initialized: repository/repository/index Version: 3
+2014-03-06 08:26:17.893 DEBUG [main] IndexMigration.java:82            Checking org.apache.jackrabbit.core.query.lucene.directory.FSDirectoryManager$FSDir@org.apache.lucene.store.MMapDirectory@/home/xumak-pc/GitWorkSpace/JackRabbitCode/MavenJR/repository/workspaces/default/index/_1 lockFactory=org.apache.lucene.store.NativeFSLockFactory@4b0af74c ...
+2014-03-06 08:26:17.896 DEBUG [main] IndexMigration.java:89            IndexFormatVersion >= V3, no migration needed
+2014-03-06 08:26:17.898 DEBUG [main] IndexMerger.java:172              index added: name=_1, numDocs=4
+2014-03-06 08:26:17.899 DEBUG [main] IndexMigration.java:82            Checking org.apache.jackrabbit.core.query.lucene.directory.FSDirectoryManager$FSDir@org.apache.lucene.store.MMapDirectory@/home/xumak-pc/GitWorkSpace/JackRabbitCode/MavenJR/repository/workspaces/default/index/_2 lockFactory=org.apache.lucene.store.NativeFSLockFactory@4d83313b ...
+2014-03-06 08:26:17.902 DEBUG [main] IndexMigration.java:89            IndexFormatVersion >= V3, no migration needed
+2014-03-06 08:26:17.904 DEBUG [main] IndexMerger.java:172              index added: name=_2, numDocs=51
+2014-03-06 08:26:17.905 DEBUG [main] CachingIndexReader.java:667       persisted cache initialized 4 DocIds in 0 ms
+2014-03-06 08:26:17.907 DEBUG [main] CachingIndexReader.java:667       persisted cache initialized 51 DocIds in 0 ms
+2014-03-06 08:26:17.908 DEBUG [main] Recovery.java:79                  RedoLog is empty, no recovery needed.
+2014-03-06 08:26:17.908 DEBUG [main] IndexHistory.java:137             Pruning index infos older than: 1394115977908(org.apache.jackrabbit.core.query.lucene.directory.FSDirectoryManager$FSDir@org.apache.lucene.store.MMapDirectory@/home/xumak-pc/GitWorkSpace/JackRabbitCode/MavenJR/repository/workspaces/default/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@251a135c)
+2014-03-06 08:26:17.908 DEBUG [main] IndexHistory.java:142             Skipping first index infos. generation=7
+2014-03-06 08:26:17.908 INFO  [main] SearchIndex.java:601              Index initialized: repository/workspaces/default/index Version: 3
+2014-03-06 08:26:17.909 DEBUG [main] RepositoryImpl.java:2106          SearchManager initialized (405ms)
+2014-03-06 08:26:17.909 INFO  [main] RepositoryImpl.java:2005          workspace 'default' initialized
+2014-03-06 08:26:17.912 INFO  [main] RepositoryImpl.java:452           SecurityManager = class org.apache.jackrabbit.core.DefaultSecurityManager
+2014-03-06 08:26:17.912 INFO  [main] RepositoryImpl.java:2001          initializing workspace 'security'...
+2014-03-06 08:26:17.912 INFO  [main] LocalFileSystem.java:164          LocalFileSystem initialized at path repository/workspaces/security
+2014-03-06 08:26:18.126 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle cafebabe-cafe-babe-cafe-babecafebabe
+2014-03-06 08:26:18.140 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle deadbeef-cafe-babe-cafe-babecafebabe
+2014-03-06 08:26:18.141 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:18.141 DEBUG [main] RepositoryImpl.java:2095          initializing SearchManager...
+2014-03-06 08:26:18.148 DEBUG [main] IndexMigration.java:82            Checking org.apache.jackrabbit.core.query.lucene.directory.FSDirectoryManager$FSDir@org.apache.lucene.store.MMapDirectory@/home/xumak-pc/GitWorkSpace/JackRabbitCode/MavenJR/repository/workspaces/security/index/_0 lockFactory=org.apache.lucene.store.NativeFSLockFactory@238f5df3 ...
+2014-03-06 08:26:18.150 DEBUG [main] IndexMigration.java:89            IndexFormatVersion >= V3, no migration needed
+2014-03-06 08:26:18.152 DEBUG [main] IndexMerger.java:172              index added: name=_0, numDocs=1
+2014-03-06 08:26:18.153 DEBUG [main] IndexMigration.java:82            Checking org.apache.jackrabbit.core.query.lucene.directory.FSDirectoryManager$FSDir@org.apache.lucene.store.MMapDirectory@/home/xumak-pc/GitWorkSpace/JackRabbitCode/MavenJR/repository/workspaces/security/index/_1 lockFactory=org.apache.lucene.store.NativeFSLockFactory@4d000e49 ...
+2014-03-06 08:26:18.156 DEBUG [main] IndexMigration.java:89            IndexFormatVersion >= V3, no migration needed
+2014-03-06 08:26:18.157 DEBUG [main] IndexMerger.java:172              index added: name=_1, numDocs=18
+2014-03-06 08:26:18.159 DEBUG [main] CachingIndexReader.java:667       persisted cache initialized 1 DocIds in 0 ms
+2014-03-06 08:26:18.160 DEBUG [main] CachingIndexReader.java:667       persisted cache initialized 18 DocIds in 0 ms
+2014-03-06 08:26:18.161 DEBUG [main] Recovery.java:79                  RedoLog is empty, no recovery needed.
+2014-03-06 08:26:18.161 DEBUG [main] IndexHistory.java:137             Pruning index infos older than: 1394115978161(org.apache.jackrabbit.core.query.lucene.directory.FSDirectoryManager$FSDir@org.apache.lucene.store.MMapDirectory@/home/xumak-pc/GitWorkSpace/JackRabbitCode/MavenJR/repository/workspaces/security/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@5eb10c59)
+2014-03-06 08:26:18.161 DEBUG [main] IndexHistory.java:142             Skipping first index infos. generation=3
+2014-03-06 08:26:18.161 INFO  [main] SearchIndex.java:601              Index initialized: repository/workspaces/security/index Version: 3
+2014-03-06 08:26:18.162 DEBUG [main] RepositoryImpl.java:2106          SearchManager initialized (21ms)
+2014-03-06 08:26:18.162 INFO  [main] RepositoryImpl.java:2005          workspace 'security' initialized
+2014-03-06 08:26:18.162 INFO  [main] DefaultSecurityManager.java:173   init: use Repository Login-Configuration for Jackrabbit
+2014-03-06 08:26:18.176 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle 21232f29-7a57-35a7-8389-4a0e4a801fc3
+2014-03-06 08:26:18.178 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:18.179 DEBUG [main] ItemManager.java:939              caching item 21232f29-7a57-35a7-8389-4a0e4a801fc3
+2014-03-06 08:26:18.182 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.183 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle 1d9e2e7c-12da-4a37-bbe9-2138deeeda51
+2014-03-06 08:26:18.183 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle fb4d0a26-5d79-4078-ac03-d1709fb0cfeb
+2014-03-06 08:26:18.185 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle e0b149c3-0706-4896-b60a-47cda07463f4
+2014-03-06 08:26:18.185 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle 4c4856d4-58b3-4426-8712-535e664314b1
+2014-03-06 08:26:18.186 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle 7d1be17f-6dce-4878-a2cb-1d2853c2be6b
+2014-03-06 08:26:18.188 DEBUG [main] SessionState.java:229             Performed item.getPath() in 5110901ns
+2014-03-06 08:26:18.188 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.188 DEBUG [main] SessionState.java:229             Performed item.getPath() in 89741ns
+2014-03-06 08:26:18.190 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle 294de355-7d9d-30b3-92d8-a1e6aab028cf
+2014-03-06 08:26:18.191 DEBUG [main] ItemManager.java:939              caching item 294de355-7d9d-30b3-92d8-a1e6aab028cf
+2014-03-06 08:26:18.191 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.191 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle a076fc61-873f-425c-9f17-30993b10768d
+2014-03-06 08:26:18.192 DEBUG [main] SessionState.java:229             Performed item.getPath() in 879166ns
+2014-03-06 08:26:18.192 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.192 DEBUG [main] SessionState.java:229             Performed item.getPath() in 36951ns
+2014-03-06 08:26:18.193 DEBUG [main] DefaultSecurityManager.java:218   No WorkspaceAccessManager configured; using default.
+2014-03-06 08:26:18.196 DEBUG [main] ProviderRegistryImpl.java:73      Could not register principal provider: principalProvider configuration entry missing.
+2014-03-06 08:26:18.196 INFO  [main] RepositoryImpl.java:364           Repository started (1941ms)
+2014-03-06 08:26:18.197 INFO  [main] TransientRepository.java:281      Transient repository initialized
+2014-03-06 08:26:18.197 DEBUG [main] TransientRepository.java:380      Opening a new session
+2014-03-06 08:26:18.199 DEBUG [main] AbstractLoginModule.java:141      Initialize LoginModule: 
+2014-03-06 08:26:18.200 DEBUG [main] AbstractLoginModule.java:171      - PrincipalProvider -> 'org.apache.jackrabbit.core.security.principal.DefaultPrincipalProvider'
+2014-03-06 08:26:18.200 DEBUG [main] DefaultLoginModule.java:148       - UserManager -> 'org.apache.jackrabbit.core.security.user.UserManagerImpl'
+2014-03-06 08:26:18.200 DEBUG [main] AbstractLoginModule.java:202      - Option: anonymousId -> 'anonymous'
+2014-03-06 08:26:18.200 DEBUG [main] AbstractLoginModule.java:202      - Option: adminId -> 'admin'
+2014-03-06 08:26:18.201 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.202 DEBUG [main] SessionState.java:229             Performed item.getPath() in 60154ns
+2014-03-06 08:26:18.202 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.202 DEBUG [main] SessionState.java:229             Performed item.getPath() in 43206ns
+2014-03-06 08:26:18.202 DEBUG [main] SessionState.java:213             Performing node.hasProperty({internal}disabled)
+2014-03-06 08:26:18.202 DEBUG [main] SessionState.java:229             Performed node.hasProperty({internal}disabled) in 28006ns
+2014-03-06 08:26:18.203 DEBUG [main] SessionState.java:213             Performing node.getName()
+2014-03-06 08:26:18.203 DEBUG [main] SessionState.java:229             Performed node.getName() in 39014ns
+2014-03-06 08:26:18.204 DEBUG [main] SessionState.java:213             Performing node.getProperty({internal}principalName)
+2014-03-06 08:26:18.204 DEBUG [main] ItemManager.java:939              caching item 21232f29-7a57-35a7-8389-4a0e4a801fc3/{internal}principalName
+2014-03-06 08:26:18.205 DEBUG [main] SessionState.java:229             Performed node.getProperty({internal}principalName) in 1106136ns
+2014-03-06 08:26:18.206 DEBUG [main] SessionState.java:213             Performing node.getName()
+2014-03-06 08:26:18.206 DEBUG [main] SessionState.java:229             Performed node.getName() in 10429ns
+2014-03-06 08:26:18.206 DEBUG [main] SessionState.java:213             Performing node.getProperty({internal}password)
+2014-03-06 08:26:18.206 DEBUG [main] ItemManager.java:939              caching item 21232f29-7a57-35a7-8389-4a0e4a801fc3/{internal}password
+2014-03-06 08:26:18.206 DEBUG [main] SessionState.java:229             Performed node.getProperty({internal}password) in 142549ns
+2014-03-06 08:26:18.207 DEBUG [main] SessionState.java:213             Performing node.getName()
+2014-03-06 08:26:18.207 DEBUG [main] SessionState.java:229             Performed node.getName() in 7609ns
+2014-03-06 08:26:18.225 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.226 DEBUG [main] SessionState.java:229             Performed item.getPath() in 66836ns
+2014-03-06 08:26:18.227 DEBUG [main] SessionState.java:213             Performing nodeExists(/rep:security/rep:authorizables/rep:users/a/ad/admin)
+2014-03-06 08:26:18.228 DEBUG [main] SessionState.java:229             Performed nodeExists(/rep:security/rep:authorizables/rep:users/a/ad/admin) in 206036ns
+2014-03-06 08:26:18.228 DEBUG [main] SessionState.java:213             Performing getNode(/rep:security/rep:authorizables/rep:users/a/ad/admin)
+2014-03-06 08:26:18.228 DEBUG [main] SessionState.java:229             Performed getNode(/rep:security/rep:authorizables/rep:users/a/ad/admin) in 172067ns
+2014-03-06 08:26:18.228 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.228 DEBUG [main] SessionState.java:229             Performed item.getPath() in 49183ns
+2014-03-06 08:26:18.228 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.229 DEBUG [main] SessionState.java:229             Performed item.getPath() in 45193ns
+2014-03-06 08:26:18.229 DEBUG [main] SessionState.java:213             Performing node.getName()
+2014-03-06 08:26:18.229 DEBUG [main] SessionState.java:229             Performed node.getName() in 16004ns
+2014-03-06 08:26:18.229 DEBUG [main] SessionState.java:213             Performing node.getProperty({internal}principalName)
+2014-03-06 08:26:18.229 DEBUG [main] SessionState.java:229             Performed node.getProperty({internal}principalName) in 14552ns
+2014-03-06 08:26:18.230 DEBUG [main] AccessControlProviderFactoryImpl.java:80 No ac-provider configuration for workspace security -> using defaults.
+2014-03-06 08:26:18.233 DEBUG [main] AccessControlProviderFactoryImpl.java:89 Default provider for workspace security = org.apache.jackrabbit.core.security.user.UserAccessControlProvider
+2014-03-06 08:26:18.233 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle b433ce67-5b32-3824-a24d-762ca0fa1ba9
+2014-03-06 08:26:18.235 DEBUG [main] ItemManager.java:939              caching item b433ce67-5b32-3824-a24d-762ca0fa1ba9
+2014-03-06 08:26:18.235 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.235 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle e953f019-e1f0-4ebe-ad9f-a4af81b1153d
+2014-03-06 08:26:18.236 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle 756aff34-c08d-49f6-939a-6a7b583da734
+2014-03-06 08:26:18.237 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle bb43cf06-9474-4721-ab7f-7be95702c1d8
+2014-03-06 08:26:18.238 DEBUG [main] SessionState.java:229             Performed item.getPath() in 2582398ns
+2014-03-06 08:26:18.238 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.238 DEBUG [main] SessionState.java:229             Performed item.getPath() in 39335ns
+2014-03-06 08:26:18.240 DEBUG [main] SessionState.java:213             Performing node.getProperty({internal}principalName)
+2014-03-06 08:26:18.240 DEBUG [main] ItemManager.java:939              caching item b433ce67-5b32-3824-a24d-762ca0fa1ba9/{internal}principalName
+2014-03-06 08:26:18.240 DEBUG [main] SessionState.java:229             Performed node.getProperty({internal}principalName) in 186332ns
+2014-03-06 08:26:18.240 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.240 DEBUG [main] SessionState.java:229             Performed item.getPath() in 46907ns
+2014-03-06 08:26:18.241 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle e769b2cc-ab5a-319d-b0ca-e4576a8974e2
+2014-03-06 08:26:18.241 DEBUG [main] ItemManager.java:939              caching item e769b2cc-ab5a-319d-b0ca-e4576a8974e2
+2014-03-06 08:26:18.241 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.242 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle 17c205c4-5b41-41f1-aaba-d994baaa4a1c
+2014-03-06 08:26:18.242 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle 84131988-c2eb-481f-bef9-d513e5bf8d76
+2014-03-06 08:26:18.243 DEBUG [main] SessionState.java:229             Performed item.getPath() in 1653386ns
+2014-03-06 08:26:18.243 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.243 DEBUG [main] SessionState.java:229             Performed item.getPath() in 38006ns
+2014-03-06 08:26:18.244 DEBUG [main] SessionState.java:213             Performing node.getProperty({internal}principalName)
+2014-03-06 08:26:18.244 DEBUG [main] ItemManager.java:939              caching item e769b2cc-ab5a-319d-b0ca-e4576a8974e2/{internal}principalName
+2014-03-06 08:26:18.244 DEBUG [main] SessionState.java:229             Performed node.getProperty({internal}principalName) in 159482ns
+2014-03-06 08:26:18.244 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.244 DEBUG [main] SessionState.java:229             Performed item.getPath() in 46348ns
+2014-03-06 08:26:18.244 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle d04952b3-df94-347c-84fc-2dc28396a62d
+2014-03-06 08:26:18.245 DEBUG [main] ItemManager.java:939              caching item d04952b3-df94-347c-84fc-2dc28396a62d
+2014-03-06 08:26:18.245 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.245 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle f9cca770-ff84-4080-a643-110eca1f520d
+2014-03-06 08:26:18.246 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle c2f8b817-2be3-44b7-a374-5bedf45bb10d
+2014-03-06 08:26:18.247 DEBUG [main] SessionState.java:229             Performed item.getPath() in 1524959ns
+2014-03-06 08:26:18.247 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.247 DEBUG [main] SessionState.java:229             Performed item.getPath() in 52719ns
+2014-03-06 08:26:18.247 DEBUG [main] SessionState.java:213             Performing node.getProperty({internal}principalName)
+2014-03-06 08:26:18.247 DEBUG [main] ItemManager.java:939              caching item d04952b3-df94-347c-84fc-2dc28396a62d/{internal}principalName
+2014-03-06 08:26:18.248 DEBUG [main] SessionState.java:229             Performed node.getProperty({internal}principalName) in 179016ns
+2014-03-06 08:26:18.248 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.248 DEBUG [main] SessionState.java:229             Performed item.getPath() in 38418ns
+2014-03-06 08:26:18.251 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:18.257 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:18.257 DEBUG [main] ItemManager.java:939              caching item 21232f29-7a57-35a7-8389-4a0e4a801fc3
+2014-03-06 08:26:18.258 DEBUG [main] SessionState.java:213             Performing queryManager.getWeaklyReferringNodes(node)
+2014-03-06 08:26:18.264 DEBUG [main] SessionState.java:229             Performed queryManager.getWeaklyReferringNodes(node) in 6253238ns
+2014-03-06 08:26:18.269 DEBUG [main] AccessControlProviderFactoryImpl.java:80 No ac-provider configuration for workspace default -> using defaults.
+2014-03-06 08:26:18.272 DEBUG [main] AccessControlProviderFactoryImpl.java:89 Default provider for workspace default = org.apache.jackrabbit.core.security.authorization.acl.ACLProvider
+2014-03-06 08:26:18.272 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:18.272 DEBUG [main] ItemManager.java:939              caching item cafebabe-cafe-babe-cafe-babecafebabe
+2014-03-06 08:26:18.274 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.274 DEBUG [main] SessionState.java:229             Performed item.getPath() in 23944ns
+2014-03-06 08:26:18.275 INFO  [main] CachingEntryCollector.java:362    Creating cache with max size of: 5000
+2014-03-06 08:26:18.275 INFO  [main] CachingEntryCollector.java:369    Root is special-cased: true
+2014-03-06 08:26:18.275 INFO  [main] CachingEntryCollector.java:73     Cache Update Strategy: T
+2014-03-06 08:26:18.275 INFO  [main] CachingEntryCollector.java:78     Caching entries with no ACLs: false
+2014-03-06 08:26:18.276 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:18.276 DEBUG [main] RepositoryImpl.java:1487          User admin logged in to workspace default
+2014-03-06 08:26:18.276 INFO  [main] TransientRepository.java:385      Session opened
+2014-03-06 08:26:18.277 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:18.277 DEBUG [main] ItemManager.java:939              caching item cafebabe-cafe-babe-cafe-babecafebabe
+2014-03-06 08:26:18.277 DEBUG [main] SessionState.java:213             Performing node.addNode(node1, null, null)
+2014-03-06 08:26:18.279 DEBUG [main] ItemManager.java:939              caching item dde20ef7-aaaa-49e5-88bb-fa29cce7becf
+2014-03-06 08:26:18.281 DEBUG [main] ItemManager.java:939              caching item dde20ef7-aaaa-49e5-88bb-fa29cce7becf/{http://www.jcp.org/jcr/1.0}primaryType
+2014-03-06 08:26:18.281 DEBUG [main] SessionState.java:229             Performed node.addNode(node1, null, null) in 3854483ns
+2014-03-06 08:26:18.449 DEBUG [main] BLOBInDataStore.java:135          0ae45ad9c766d6fb8da856cf96d049f7c0e08ada (9603742)
+2014-03-06 08:26:18.452 DEBUG [main] SessionState.java:213             Performing node.setProperty({}audio, org.apache.jackrabbit.core.value.BinaryValueImpl@0)
+2014-03-06 08:26:18.452 DEBUG [main] SessionState.java:213             Performing node.hasProperty({}audio)
+2014-03-06 08:26:18.453 DEBUG [main] SessionState.java:229             Performed node.hasProperty({}audio) in 3492ns
+2014-03-06 08:26:18.453 DEBUG [main] ItemManager.java:939              caching item dde20ef7-aaaa-49e5-88bb-fa29cce7becf/{}audio
+2014-03-06 08:26:18.453 DEBUG [main] SessionState.java:229             Performed node.setProperty({}audio, org.apache.jackrabbit.core.value.BinaryValueImpl@0) in 859058ns
+2014-03-06 08:26:18.454 DEBUG [main] SessionState.java:213             Performing session.save()
+2014-03-06 08:26:18.454 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.454 DEBUG [main] SessionState.java:229             Performed item.getPath() in 18185ns
+2014-03-06 08:26:18.454 DEBUG [main] SessionSaveOperation.java:61      Saving changes under /
+2014-03-06 08:26:18.456 DEBUG [main] SessionState.java:213             Performing item.save()
+2014-03-06 08:26:18.458 DEBUG [main] ItemManager.java:939              caching item cafebabe-cafe-babe-cafe-babecafebabe/{http://www.jcp.org/jcr/1.0}primaryType
+2014-03-06 08:26:18.458 DEBUG [main] ItemManager.java:939              caching item deadbeef-cafe-babe-cafe-babecafebabe
+2014-03-06 08:26:18.468 DEBUG [main] AbstractBundlePersistenceManager.java:798 Storing bundle cafebabe-cafe-babe-cafe-babecafebabe
+2014-03-06 08:26:18.494 DEBUG [main] AbstractBundlePersistenceManager.java:801 cafebabe-cafe-babe-cafe-babecafebabe (2704)
+2014-03-06 08:26:18.494 DEBUG [main] AbstractBundlePersistenceManager.java:798 Storing bundle dde20ef7-aaaa-49e5-88bb-fa29cce7becf
+2014-03-06 08:26:18.506 DEBUG [main] AbstractBundlePersistenceManager.java:801 dde20ef7-aaaa-49e5-88bb-fa29cce7becf (1782)
+2014-03-06 08:26:18.948 DEBUG [main] SharedItemStateManager.java:793   persisting change log {#addedStates=3, #modifiedStates=1, #deletedStates=0, #modifiedRefs=0} took 480ms
+2014-03-06 08:26:18.949 DEBUG [main] ClusterNode.java:705              Stored record '1' to Journal (319)
+2014-03-06 08:26:18.949 INFO  [main] ClusterNode.java:711              [1] 1 admin@default:/ (4486)
+2014-03-06 08:26:18.949 DEBUG [main] ObservationDispatcher.java:221    notifying 6 synchronous listeners.
+2014-03-06 08:26:18.951 DEBUG [main] SearchManager.java:319            onEvent: indexing started
+2014-03-06 08:26:18.962 DEBUG [main] SearchManager.java:417            onEvent: indexing finished in 11 ms.
+2014-03-06 08:26:18.962 DEBUG [main] EventConsumer.java:252            listener org.apache.jackrabbit.core.SearchManager processed events in 11 ms.
+2014-03-06 08:26:18.963 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:18.964 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:18.964 DEBUG [main] ItemManager.java:939              caching item dde20ef7-aaaa-49e5-88bb-fa29cce7becf
+2014-03-06 08:26:18.964 DEBUG [main] EventConsumer.java:252            listener org.apache.jackrabbit.core.security.authorization.acl.CachingEntryCollector processed events in 1 ms.
+2014-03-06 08:26:18.965 DEBUG [main] EventConsumer.java:252            listener org.apache.jackrabbit.core.lock.LockManagerImpl processed events in 1 ms.
+2014-03-06 08:26:18.965 DEBUG [ObservationManager] ObservationDispatcher.java:156 got EventStateCollection
+2014-03-06 08:26:18.965 DEBUG [main] SessionState.java:229             Performed item.save() in 509142183ns
+2014-03-06 08:26:18.965 DEBUG [ObservationManager] ObservationDispatcher.java:157 event delivery to 0 consumers started...
+2014-03-06 08:26:18.965 DEBUG [ObservationManager] ObservationDispatcher.java:169 event delivery finished.
+2014-03-06 08:26:18.965 DEBUG [main] SessionState.java:229             Performed session.save() in 511469197ns
+2014-03-06 08:26:18.966 DEBUG [main] SessionState.java:213             Performing node.getNode(node1)
+2014-03-06 08:26:18.966 DEBUG [main] SessionState.java:229             Performed node.getNode(node1) in 102128ns
+2014-03-06 08:26:18.967 DEBUG [main] SessionState.java:213             Performing item.remove()
+2014-03-06 08:26:18.967 DEBUG [main] SessionState.java:213             Performing item.getDepth()
+2014-03-06 08:26:18.967 DEBUG [main] SessionState.java:229             Performed item.getDepth() in 52040ns
+2014-03-06 08:26:18.967 DEBUG [main] SessionState.java:213             Performing node.getParent()
+2014-03-06 08:26:18.967 DEBUG [main] SessionState.java:229             Performed node.getParent() in 23261ns
+2014-03-06 08:26:18.968 DEBUG [main] ItemManager.java:1026             invalidated item dde20ef7-aaaa-49e5-88bb-fa29cce7becf/{}audio
+2014-03-06 08:26:18.968 DEBUG [main] ItemManager.java:970              removing item dde20ef7-aaaa-49e5-88bb-fa29cce7becf/{}audio from cache
+2014-03-06 08:26:18.968 DEBUG [main] ItemManager.java:1026             invalidated item dde20ef7-aaaa-49e5-88bb-fa29cce7becf/{http://www.jcp.org/jcr/1.0}primaryType
+2014-03-06 08:26:18.968 DEBUG [main] ItemManager.java:970              removing item dde20ef7-aaaa-49e5-88bb-fa29cce7becf/{http://www.jcp.org/jcr/1.0}primaryType from cache
+2014-03-06 08:26:18.968 DEBUG [main] ItemManager.java:1026             invalidated item dde20ef7-aaaa-49e5-88bb-fa29cce7becf
+2014-03-06 08:26:18.968 DEBUG [main] ItemManager.java:970              removing item dde20ef7-aaaa-49e5-88bb-fa29cce7becf from cache
+2014-03-06 08:26:18.968 DEBUG [main] SessionState.java:229             Performed item.remove() in 1683710ns
+2014-03-06 08:26:18.968 DEBUG [main] SessionState.java:213             Performing session.save()
+2014-03-06 08:26:18.969 DEBUG [main] SessionState.java:213             Performing item.getPath()
+2014-03-06 08:26:18.969 DEBUG [main] SessionState.java:229             Performed item.getPath() in 9581ns
+2014-03-06 08:26:18.969 DEBUG [main] SessionSaveOperation.java:61      Saving changes under /
+2014-03-06 08:26:18.969 DEBUG [main] SessionState.java:213             Performing item.save()
+2014-03-06 08:26:18.970 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle dde20ef7-aaaa-49e5-88bb-fa29cce7becf
+2014-03-06 08:26:18.979 DEBUG [main] AbstractBundlePersistenceManager.java:798 Storing bundle cafebabe-cafe-babe-cafe-babecafebabe
+2014-03-06 08:26:18.980 DEBUG [main] AbstractBundlePersistenceManager.java:801 cafebabe-cafe-babe-cafe-babecafebabe (2382)
+2014-03-06 08:26:19.000 DEBUG [main] SharedItemStateManager.java:793   persisting change log {#addedStates=0, #modifiedStates=1, #deletedStates=3, #modifiedRefs=0} took 30ms
+2014-03-06 08:26:19.001 DEBUG [main] AbstractBundlePersistenceManager.java:765 Loading bundle dde20ef7-aaaa-49e5-88bb-fa29cce7becf
+2014-03-06 08:26:19.001 DEBUG [main] ClusterNode.java:705              Stored record '2' to Journal (181)
+2014-03-06 08:26:19.002 INFO  [main] ClusterNode.java:711              [2] 2 admin@default:/ (2382)
+2014-03-06 08:26:19.002 DEBUG [main] ObservationDispatcher.java:221    notifying 6 synchronous listeners.
+2014-03-06 08:26:19.002 DEBUG [main] SearchManager.java:319            onEvent: indexing started
+2014-03-06 08:26:19.003 DEBUG [main] SearchManager.java:417            onEvent: indexing finished in 1 ms.
+2014-03-06 08:26:19.003 DEBUG [main] EventConsumer.java:252            listener org.apache.jackrabbit.core.SearchManager processed events in 1 ms.
+2014-03-06 08:26:19.003 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:19.003 DEBUG [main] SessionState.java:213             Performing nodeExists(/)
+2014-03-06 08:26:19.003 DEBUG [main] MLRUItemStateCache.java:89        Item state cache size: 0% of 4194304 bytes
+2014-03-06 08:26:19.004 DEBUG [main] ItemManager.java:939              caching item cafebabe-cafe-babe-cafe-babecafebabe
+2014-03-06 08:26:19.004 DEBUG [main] SessionState.java:229             Performed nodeExists(/) in 319652ns
+2014-03-06 08:26:19.004 DEBUG [main] SessionState.java:213             Performing getNode(/)
+2014-03-06 08:26:19.004 DEBUG [main] SessionState.java:229             Performed getNode(/) in 20218ns
+2014-03-06 08:26:19.004 DEBUG [main] EventConsumer.java:252            listener org.apache.jackrabbit.core.security.authorization.acl.CachingEntryCollector processed events in 1 ms.
+2014-03-06 08:26:19.004 DEBUG [main] EventConsumer.java:252            listener org.apache.jackrabbit.core.lock.LockManagerImpl processed events in 0 ms.
+2014-03-06 08:26:19.004 DEBUG [ObservationManager] ObservationDispatcher.java:156 got EventStateCollection
+2014-03-06 08:26:19.004 DEBUG [ObservationManager] ObservationDispatcher.java:157 event delivery to 0 consumers started...
+2014-03-06 08:26:19.005 DEBUG [ObservationManager] ObservationDispatcher.java:169 event delivery finished.
+2014-03-06 08:26:19.005 DEBUG [main] SessionState.java:229             Performed item.save() in 35781078ns
+2014-03-06 08:26:19.005 DEBUG [main] SessionState.java:229             Performed session.save() in 36278863ns
+2014-03-06 08:26:19.005 INFO  [main] TransientRepository.java:424      Session closed
+2014-03-06 08:26:19.005 DEBUG [main] TransientRepository.java:289      Shutting down transient repository
+2014-03-06 08:26:19.005 INFO  [main] RepositoryImpl.java:1060          Shutting down repository...
+2014-03-06 08:26:19.005 DEBUG [main] IndexMerger.java:243              dispose IndexMerger
+2014-03-06 08:26:19.006 DEBUG [main] IndexMerger.java:254              quit flag set
+2014-03-06 08:26:19.006 DEBUG [main] AbstractIndex.java:379            committing IndexReader.
+2014-03-06 08:26:19.006 DEBUG [main] IndexHistory.java:137             Pruning index infos older than: 1394115979006(org.apache.jackrabbit.core.query.lucene.directory.FSDirectoryManager$FSDir@org.apache.lucene.store.MMapDirectory@/home/xumak-pc/GitWorkSpace/JackRabbitCode/MavenJR/repository/repository/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@16100f31)
+2014-03-06 08:26:19.006 DEBUG [main] IndexHistory.java:142             Skipping first index infos. generation=2
+2014-03-06 08:26:19.007 INFO  [main] SearchIndex.java:834              Index closed: repository/repository/index
+2014-03-06 08:26:19.007 INFO  [main] RepositoryImpl.java:2159          shutting down workspace 'default'...
+2014-03-06 08:26:19.007 INFO  [main] ObservationDispatcher.java:121    Notification of EventListeners stopped.
+2014-03-06 08:26:19.007 DEBUG [main] IndexMerger.java:243              dispose IndexMerger
+2014-03-06 08:26:19.007 DEBUG [main] IndexMerger.java:254              quit flag set
+2014-03-06 08:26:19.007 DEBUG [main] AbstractIndex.java:379            committing IndexReader.
+2014-03-06 08:26:19.007 DEBUG [main] AbstractIndex.java:379            committing IndexReader.
+2014-03-06 08:26:19.007 DEBUG [main] IndexInfos.java:169               Writing IndexInfos indexes_8
+2014-03-06 08:26:19.007 DEBUG [main] IndexInfos.java:178                 + _1:2
+2014-03-06 08:26:19.007 DEBUG [main] IndexInfos.java:178                 + _2:2
+2014-03-06 08:26:19.008 DEBUG [main] IndexHistory.java:137             Pruning index infos older than: 1394115979008(org.apache.jackrabbit.core.query.lucene.directory.FSDirectoryManager$FSDir@org.apache.lucene.store.MMapDirectory@/home/xumak-pc/GitWorkSpace/JackRabbitCode/MavenJR/repository/workspaces/default/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@251a135c)
+2014-03-06 08:26:19.008 DEBUG [main] IndexHistory.java:142             Skipping first index infos. generation=8
+2014-03-06 08:26:19.008 DEBUG [main] IndexHistory.java:160             Deleted redo log with generation=7, timestamp=1394115979000
+2014-03-06 08:26:19.008 DEBUG [main] IndexHistory.java:170             Deleted index infos with generation=7
+2014-03-06 08:26:19.017 INFO  [main] SearchIndex.java:834              Index closed: repository/workspaces/default/index
+2014-03-06 08:26:19.110 INFO  [main] DerbyConnectionHelper.java:94     Database 'repository/workspaces/default/db' shutdown.
+2014-03-06 08:26:19.111 INFO  [main] RepositoryImpl.java:2166          workspace 'default' has been shutdown
+2014-03-06 08:26:19.111 INFO  [main] RepositoryImpl.java:2159          shutting down workspace 'security'...
+2014-03-06 08:26:19.111 INFO  [main] ObservationDispatcher.java:121    Notification of EventListeners stopped.
+2014-03-06 08:26:19.111 DEBUG [main] IndexMerger.java:243              dispose IndexMerger
+2014-03-06 08:26:19.111 DEBUG [main] IndexMerger.java:254              quit flag set
+2014-03-06 08:26:19.111 DEBUG [main] AbstractIndex.java:379            committing IndexReader.
+2014-03-06 08:26:19.112 DEBUG [main] AbstractIndex.java:379            committing IndexReader.
+2014-03-06 08:26:19.112 DEBUG [main] IndexHistory.java:137             Pruning index infos older than: 1394115979112(org.apache.jackrabbit.core.query.lucene.directory.FSDirectoryManager$FSDir@org.apache.lucene.store.MMapDirectory@/home/xumak-pc/GitWorkSpace/JackRabbitCode/MavenJR/repository/workspaces/security/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@5eb10c59)
+2014-03-06 08:26:19.112 DEBUG [main] IndexHistory.java:142             Skipping first index infos. generation=3
+2014-03-06 08:26:19.112 INFO  [main] SearchIndex.java:834              Index closed: repository/workspaces/security/index
+2014-03-06 08:26:19.193 INFO  [main] DerbyConnectionHelper.java:94     Database 'repository/workspaces/security/db' shutdown.
+2014-03-06 08:26:19.193 INFO  [main] RepositoryImpl.java:2166          workspace 'security' has been shutdown
+2014-03-06 08:26:19.268 INFO  [main] DerbyConnectionHelper.java:94     Database 'repository/version/db' shutdown.
+2014-03-06 08:26:19.270 INFO  [main] RepositoryImpl.java:1165          Repository has been shutdown
+2014-03-06 08:26:19.271 INFO  [main] TransientRepository.java:291      Transient repository shut down

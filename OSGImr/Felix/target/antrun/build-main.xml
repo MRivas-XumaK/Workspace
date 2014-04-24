@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <delete dir="/home/xumakgt6/Felix/trunk/main/bin"/>
+  <mkdir dir="/home/xumakgt6/Felix/trunk/main/bin"/>
+  <delete dir="/home/xumakgt6/Felix/trunk/main/conf"/>
+  <mkdir dir="/home/xumakgt6/Felix/trunk/main/conf"/>
+  <copy file="/home/xumakgt6/Felix/trunk/main/target/org.apache.felix.main-4.5.0-SNAPSHOT.jar" tofile="/home/xumakgt6/Felix/trunk/main/bin/felix.jar"/>
+  <copy todir="/home/xumakgt6/Felix/trunk/main/conf" file="/home/xumakgt6/Felix/trunk/main/target/classes/config.properties"/>
+</target>
+</project>

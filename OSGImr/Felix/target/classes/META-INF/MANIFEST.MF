@@ -1,0 +1,39 @@
+Manifest-Version: 1.0
+Export-Package: org.osgi.resource;version="1.0",org.osgi.framework.sta
+ rtlevel;uses:="org.osgi.framework";version="1.0",org.osgi.framework.w
+ iring;uses:="org.osgi.resource,org.osgi.framework";version="1.1",org.
+ osgi.service.url;version="1.0",org.osgi.framework.hooks.service;uses:
+ ="org.osgi.framework";version="1.1",org.osgi.framework.hooks.resolver
+ ;uses:="org.osgi.framework.wiring";version="1.0",org.osgi.service.sta
+ rtlevel;uses:="org.osgi.framework";version="1.1",org.osgi.framework.l
+ aunch;uses:="org.osgi.framework";version="1.1",org.osgi.util.tracker;
+ uses:="org.osgi.framework";version="1.5.1",org.osgi.framework.hooks.b
+ undle;uses:="org.osgi.framework";version="1.1",org.osgi.service.packa
+ geadmin;uses:="org.osgi.framework";version="1.2",org.osgi.framework.n
+ amespace;uses:="org.osgi.resource";version="1.0",org.osgi.framework;v
+ ersion="1.7",org.osgi.framework.hooks.weaving;uses:="org.osgi.framewo
+ rk.wiring";version="1.0"
+Ignore-Package: java.util.jar,org.osgi.resource,java.util,java.nio.cha
+ nnels,org.osgi.framework.startlevel,java.net,org.osgi.framework.wirin
+ g,org.osgi.service.url,org.osgi.service.packageadmin,org.osgi.framewo
+ rk.hooks.bundle,org.osgi.framework.hooks.service,org.osgi.framework.h
+ ooks.resolver,java.security,org.osgi.service.startlevel,java.lang.ref
+ lect,java.security.cert,java.io,org.osgi.framework.launch,java.util.z
+ ip,org.osgi.framework,javax.security.auth.x500,java.lang.ref,org.osgi
+ .framework.hooks.weaving,java.lang
+Built-By: xumakgt6
+Tool: Bnd-1.43.0
+Bundle-Name: Apache Felix
+Created-By: Apache Maven Bundle Plugin
+Bundle-Vendor: The Apache Software Foundation
+Build-Jdk: 1.7.0_51
+Bundle-Version: 4.5.0.SNAPSHOT
+Bnd-LastModified: 1397572641129
+Bundle-ManifestVersion: 2
+Bundle-Description: OSGi R4 framework.
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-SymbolicName: org.apache.felix.main
+Embed-Dependency: *;artifactId=org.apache.felix.framework;inline=true
+Bundle-DocURL: http://www.apache.org/
+Main-Class: org.apache.felix.main.Main
+
